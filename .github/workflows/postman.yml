@@ -57,4 +57,4 @@ jobs:
           collectionID: 10954437-8cb0d465-dff6-4319-a607-caad24998335
           environmentID: 98798-a974f882-8ecg0-4c80-9901-a583778393987a
       - run: npm install -g newman
-      - run: newman run ./testc.json
+      - run: newman run ./Restaurant_one_user.postman_collection.json
