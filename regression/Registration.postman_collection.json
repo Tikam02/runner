@@ -1,0 +1,1295 @@
+{
+	"info": {
+		"_postman_id": "ec488684-a454-4739-a4b2-61eec5d4af88",
+		"name": "Registration",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Registration 1  Res Pub",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var xsrfCookie = postman.getResponseCookie(\"csrftoken\"); \r",
+							"pm.collectionVariables.set(\"csrftoken\", xsrfCookie.value);\r",
+							"\r",
+							"\r",
+							"pm.test(\"Status code is 201\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});\r",
+							" \r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "X-CSRFToken",
+						"value": "{{csrftoken}}",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Referer",
+						"value": "https:https://dev.huddleup.tech",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"{{Email_Pub1}}\",\r\n    \"password1\": \"{{Password}}\",\r\n    \"password2\": \"{{Password}}\",\r\n    \"device_id\": \"{{id}}\",\r\n    \"is_publisher\": {{1}}\r\n}"
+				},
+				"url": {
+					"raw": "{{base_url_registration}}",
+					"host": [
+						"{{base_url_registration}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Registration 2 Res Sub",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var xsrfCookie = postman.getResponseCookie(\"csrftoken\"); \r",
+							"pm.collectionVariables.set(\"csrftoken\", xsrfCookie.value);\r",
+							"\r",
+							"\r",
+							"pm.test(\"Status code is 201\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});\r",
+							" \r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "X-CSRFToken",
+						"value": "{{csrftoken}}",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Referer",
+						"value": "https://dev.huddleup.tech",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"{{Email_Sub1}}\",\r\n    \"password1\": \"{{Password}}\",\r\n    \"password2\": \"{{Password}}\",\r\n    \"device_id\": \"{{id}}\",\r\n    \"is_publisher\": {{2}}\r\n}"
+				},
+				"url": {
+					"raw": "{{base_url_registration}}",
+					"host": [
+						"{{base_url_registration}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Registration 3 Res Pub",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var xsrfCookie = postman.getResponseCookie(\"csrftoken\"); \r",
+							"pm.collectionVariables.set(\"csrftoken\", xsrfCookie.value);\r",
+							"\r",
+							"\r",
+							"pm.test(\"Status code is 201\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});\r",
+							" \r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "X-CSRFToken",
+						"value": "{{csrftoken}}",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Referer",
+						"value": "https://dev.huddleup.tech",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"{{Email_Pub2}}\",\r\n    \"password1\": \"{{Password}}\",\r\n    \"password2\": \"{{Password}}\",\r\n    \"device_id\": \"{{id}}\",\r\n    \"is_publisher\": {{1}}\r\n}"
+				},
+				"url": {
+					"raw": "{{base_url_registration}}",
+					"host": [
+						"{{base_url_registration}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Registration 4 Res Sub",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var xsrfCookie = postman.getResponseCookie(\"csrftoken\"); \r",
+							"pm.collectionVariables.set(\"csrftoken\", xsrfCookie.value);\r",
+							"\r",
+							"\r",
+							"pm.test(\"Status code is 201\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});\r",
+							" \r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "X-CSRFToken",
+						"value": "{{csrftoken}}",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Referer",
+						"value": "https://dev.huddleup.tech",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"{{Email_Sub2}}\",\r\n    \"password1\": \"{{Password}}\",\r\n    \"password2\": \"{{Password}}\",\r\n    \"device_id\": \"{{id}}\",\r\n    \"is_publisher\": {{2}}\r\n}"
+				},
+				"url": {
+					"raw": "{{base_url_registration}}",
+					"host": [
+						"{{base_url_registration}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Registration 5 Phar Pub",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var xsrfCookie = postman.getResponseCookie(\"csrftoken\"); \r",
+							"pm.collectionVariables.set(\"csrftoken\", xsrfCookie.value);\r",
+							"\r",
+							"\r",
+							"pm.test(\"Status code is 201\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});\r",
+							" \r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "X-CSRFToken",
+						"value": "{{csrftoken}}",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Referer",
+						"value": "https://dev.huddleup.tech",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"{{Email_Pub3}}\",\r\n    \"password1\": \"{{Password}}\",\r\n    \"password2\": \"{{Password}}\",\r\n    \"device_id\": \"{{id}}\",\r\n    \"is_publisher\": {{1}}\r\n}"
+				},
+				"url": {
+					"raw": "{{base_url_registration}}",
+					"host": [
+						"{{base_url_registration}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Registration 6 Phar Sub",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var xsrfCookie = postman.getResponseCookie(\"csrftoken\"); \r",
+							"pm.collectionVariables.set(\"csrftoken\", xsrfCookie.value);\r",
+							"\r",
+							"\r",
+							"pm.test(\"Status code is 201\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});\r",
+							" \r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "X-CSRFToken",
+						"value": "{{csrftoken}}",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Referer",
+						"value": "https://dev.huddleup.tech",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"{{Email_Sub3}}\",\r\n    \"password1\": \"{{Password}}\",\r\n    \"password2\": \"{{Password}}\",\r\n    \"device_id\": \"{{id}}\",\r\n    \"is_publisher\": {{2}}\r\n}"
+				},
+				"url": {
+					"raw": "{{base_url_registration}}",
+					"host": [
+						"{{base_url_registration}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Registration 7 Phar Pub",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var xsrfCookie = postman.getResponseCookie(\"csrftoken\"); \r",
+							"pm.collectionVariables.set(\"csrftoken\", xsrfCookie.value);\r",
+							"\r",
+							"\r",
+							"pm.test(\"Status code is 201\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});\r",
+							" \r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "X-CSRFToken",
+						"value": "{{csrftoken}}",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Referer",
+						"value": "https://dev.huddleup.tech",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"{{Email_Pub4}}\",\r\n    \"password1\": \"{{Password}}\",\r\n    \"password2\": \"{{Password}}\",\r\n    \"device_id\": \"{{id}}\",\r\n    \"is_publisher\": {{1}}\r\n}"
+				},
+				"url": {
+					"raw": "{{base_url_registration}}",
+					"host": [
+						"{{base_url_registration}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Registration 8 Phar Sub",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var xsrfCookie = postman.getResponseCookie(\"csrftoken\"); \r",
+							"pm.collectionVariables.set(\"csrftoken\", xsrfCookie.value);\r",
+							"\r",
+							"\r",
+							"pm.test(\"Status code is 201\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});\r",
+							" \r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "X-CSRFToken",
+						"value": "{{csrftoken}}",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Referer",
+						"value": "https://dev.huddleup.tech",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"{{Email_Sub4}}\",\r\n    \"password1\": \"{{Password}}\",\r\n    \"password2\": \"{{Password}}\",\r\n    \"device_id\": \"{{id}}\",\r\n    \"is_publisher\": {{2}}\r\n}"
+				},
+				"url": {
+					"raw": "{{base_url_registration}}",
+					"host": [
+						"{{base_url_registration}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Registration 9 Gro Pub",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var xsrfCookie = postman.getResponseCookie(\"csrftoken\"); \r",
+							"pm.collectionVariables.set(\"csrftoken\", xsrfCookie.value);\r",
+							"\r",
+							"\r",
+							"pm.test(\"Status code is 201\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});\r",
+							" \r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "X-CSRFToken",
+						"value": "{{csrftoken}}",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Referer",
+						"value": "https://dev.huddleup.tech",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"{{Email_Pub5}}\",\r\n    \"password1\": \"{{Password}}\",\r\n    \"password2\": \"{{Password}}\",\r\n    \"device_id\": \"{{id}}\",\r\n    \"is_publisher\": {{1}}\r\n}"
+				},
+				"url": {
+					"raw": "{{base_url_registration}}",
+					"host": [
+						"{{base_url_registration}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Registration 10 Gro Sub",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var xsrfCookie = postman.getResponseCookie(\"csrftoken\"); \r",
+							"pm.collectionVariables.set(\"csrftoken\", xsrfCookie.value);\r",
+							"\r",
+							"\r",
+							"pm.test(\"Status code is 201\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});\r",
+							" \r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "X-CSRFToken",
+						"value": "{{csrftoken}}",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Referer",
+						"value": "https://dev.huddleup.tech",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"{{Email_Sub5}}\",\r\n    \"password1\": \"{{Password}}\",\r\n    \"password2\": \"{{Password}}\",\r\n    \"device_id\": \"{{id}}\",\r\n    \"is_publisher\": {{2}}\r\n}"
+				},
+				"url": {
+					"raw": "{{base_url_registration}}",
+					"host": [
+						"{{base_url_registration}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Registration 11 Gro Pub",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var xsrfCookie = postman.getResponseCookie(\"csrftoken\"); \r",
+							"pm.collectionVariables.set(\"csrftoken\", xsrfCookie.value);\r",
+							"\r",
+							"\r",
+							"pm.test(\"Status code is 201\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});\r",
+							" \r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "X-CSRFToken",
+						"value": "{{csrftoken}}",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Referer",
+						"value": "https://dev.huddleup.tech",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"{{Email_Pub6}}\",\r\n    \"password1\": \"{{Password}}\",\r\n    \"password2\": \"{{Password}}\",\r\n    \"device_id\": \"{{id}}\",\r\n    \"is_publisher\": {{1}}\r\n}"
+				},
+				"url": {
+					"raw": "{{base_url_registration}}",
+					"host": [
+						"{{base_url_registration}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Registration 12 Gro Sub",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var xsrfCookie = postman.getResponseCookie(\"csrftoken\"); \r",
+							"pm.collectionVariables.set(\"csrftoken\", xsrfCookie.value);\r",
+							"\r",
+							"\r",
+							"pm.test(\"Status code is 201\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});\r",
+							" \r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "X-CSRFToken",
+						"value": "{{csrftoken}}",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Referer",
+						"value": "https://dev.huddleup.tech",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"{{Email_Sub6}}\",\r\n    \"password1\": \"{{Password}}\",\r\n    \"password2\": \"{{Password}}\",\r\n    \"device_id\": \"{{id}}\",\r\n    \"is_publisher\": {{2}}\r\n}"
+				},
+				"url": {
+					"raw": "{{base_url_registration}}",
+					"host": [
+						"{{base_url_registration}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Registration 13 Home Pub",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var xsrfCookie = postman.getResponseCookie(\"csrftoken\"); \r",
+							"pm.collectionVariables.set(\"csrftoken\", xsrfCookie.value);\r",
+							"\r",
+							"\r",
+							"pm.test(\"Status code is 201\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});\r",
+							" \r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "X-CSRFToken",
+						"value": "{{csrftoken}}",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Referer",
+						"value": "https://dev.huddleup.tech",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"{{Email_Pub7}}\",\r\n    \"password1\": \"{{Password}}\",\r\n    \"password2\": \"{{Password}}\",\r\n    \"device_id\": \"{{id}}\",\r\n    \"is_publisher\": {{1}}\r\n}"
+				},
+				"url": {
+					"raw": "{{base_url_registration}}",
+					"host": [
+						"{{base_url_registration}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Registration 14  Home Sub",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var xsrfCookie = postman.getResponseCookie(\"csrftoken\"); \r",
+							"pm.collectionVariables.set(\"csrftoken\", xsrfCookie.value);\r",
+							"\r",
+							"\r",
+							"pm.test(\"Status code is 201\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});\r",
+							" \r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "X-CSRFToken",
+						"value": "{{csrftoken}}",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Referer",
+						"value": "https://dev.huddleup.tech",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"{{Email_Sub7}}\",\r\n    \"password1\": \"{{Password}}\",\r\n    \"password2\": \"{{Password}}\",\r\n    \"device_id\": \"{{id}}\",\r\n    \"is_publisher\": {{2}}\r\n}"
+				},
+				"url": {
+					"raw": "{{base_url_registration}}",
+					"host": [
+						"{{base_url_registration}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Registration 15  Home Pub",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var xsrfCookie = postman.getResponseCookie(\"csrftoken\"); \r",
+							"pm.collectionVariables.set(\"csrftoken\", xsrfCookie.value);\r",
+							"\r",
+							"\r",
+							"pm.test(\"Status code is 201\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});\r",
+							" \r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "X-CSRFToken",
+						"value": "{{csrftoken}}",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Referer",
+						"value": "https://dev.huddleup.tech",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"{{Email_Pub8}}\",\r\n    \"password1\": \"{{Password}}\",\r\n    \"password2\": \"{{Password}}\",\r\n    \"device_id\": \"{{id}}\",\r\n    \"is_publisher\": {{1}}\r\n}"
+				},
+				"url": {
+					"raw": "{{base_url_registration}}",
+					"host": [
+						"{{base_url_registration}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Registration 16  Home Sub",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var xsrfCookie = postman.getResponseCookie(\"csrftoken\"); \r",
+							"pm.collectionVariables.set(\"csrftoken\", xsrfCookie.value);\r",
+							"\r",
+							"\r",
+							"pm.test(\"Status code is 201\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});\r",
+							" \r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "X-CSRFToken",
+						"value": "{{csrftoken}}",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Referer",
+						"value": "https://dev.huddleup.tech",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"{{Email_Sub8}}\",\r\n    \"password1\": \"{{Password}}\",\r\n    \"password2\": \"{{Password}}\",\r\n    \"device_id\": \"{{id}}\",\r\n    \"is_publisher\": {{2}}\r\n}"
+				},
+				"url": {
+					"raw": "{{base_url_registration}}",
+					"host": [
+						"{{base_url_registration}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Registration 17 Health Pub",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var xsrfCookie = postman.getResponseCookie(\"csrftoken\"); \r",
+							"pm.collectionVariables.set(\"csrftoken\", xsrfCookie.value);\r",
+							"\r",
+							"\r",
+							"pm.test(\"Status code is 201\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});\r",
+							" \r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "X-CSRFToken",
+						"value": "{{csrftoken}}",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Referer",
+						"value": "https://dev.huddleup.tech",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"{{Email_Pub9}}\",\r\n    \"password1\": \"{{Password}}\",\r\n    \"password2\": \"{{Password}}\",\r\n    \"device_id\": \"{{id}}\",\r\n    \"is_publisher\": {{1}}\r\n}"
+				},
+				"url": {
+					"raw": "{{base_url_registration}}",
+					"host": [
+						"{{base_url_registration}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Registration 18",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var xsrfCookie = postman.getResponseCookie(\"csrftoken\"); \r",
+							"pm.collectionVariables.set(\"csrftoken\", xsrfCookie.value);\r",
+							"\r",
+							"\r",
+							"pm.test(\"Status code is 201\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});\r",
+							" \r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "X-CSRFToken",
+						"value": "{{csrftoken}}",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Referer",
+						"value": "https://dev.huddleup.tech",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"{{Email_Sub9}}\",\r\n    \"password1\": \"{{Password}}\",\r\n    \"password2\": \"{{Password}}\",\r\n    \"device_id\": \"{{id}}\",\r\n    \"is_publisher\": {{2}}\r\n}"
+				},
+				"url": {
+					"raw": "{{base_url_registration}}",
+					"host": [
+						"{{base_url_registration}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Registration 19 Health Pub",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var xsrfCookie = postman.getResponseCookie(\"csrftoken\"); \r",
+							"pm.collectionVariables.set(\"csrftoken\", xsrfCookie.value);\r",
+							"\r",
+							"\r",
+							"pm.test(\"Status code is 201\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});\r",
+							" \r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "X-CSRFToken",
+						"value": "{{csrftoken}}",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Referer",
+						"value": "https://dev.huddleup.tech",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"{{Email_Pub10}}\",\r\n    \"password1\": \"{{Password}}\",\r\n    \"password2\": \"{{Password}}\",\r\n    \"device_id\": \"{{id}}\",\r\n    \"is_publisher\": {{1}}\r\n}"
+				},
+				"url": {
+					"raw": "{{base_url_registration}}",
+					"host": [
+						"{{base_url_registration}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Registration 20 Health Sub",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var xsrfCookie = postman.getResponseCookie(\"csrftoken\"); \r",
+							"pm.collectionVariables.set(\"csrftoken\", xsrfCookie.value);\r",
+							"\r",
+							"\r",
+							"pm.test(\"Status code is 201\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});\r",
+							" \r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "X-CSRFToken",
+						"value": "{{csrftoken}}",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Referer",
+						"value": "https://dev.huddleup.tech",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"{{Email_Sub10}}\",\r\n    \"password1\": \"{{Password}}\",\r\n    \"password2\": \"{{Password}}\",\r\n    \"device_id\": \"{{id}}\",\r\n    \"is_publisher\": {{2}}\r\n}"
+				},
+				"url": {
+					"raw": "{{base_url_registration}}",
+					"host": [
+						"{{base_url_registration}}"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url_registration",
+			"value": "https://dev.huddleup.tech/api/v1/rest-auth/registration/"
+		},
+		{
+			"key": "Email_Pub1",
+			"value": "Huddleup1@gmail.com"
+		},
+		{
+			"key": "Email_Pub2",
+			"value": "Huddleup2@gmail.com"
+		},
+		{
+			"key": "Email_Pub3",
+			"value": "Huddleup3@gmail.com"
+		},
+		{
+			"key": "Email_Pub4",
+			"value": "Huddleup4@gmail.com"
+		},
+		{
+			"key": "Email_Pub5",
+			"value": "Huddleup5@gmail.com"
+		},
+		{
+			"key": "Email_Pub6",
+			"value": "Huddleup6@gmail.com"
+		},
+		{
+			"key": "Email_Pub7",
+			"value": "Huddleup7@gmail.com"
+		},
+		{
+			"key": "Email_Pub8",
+			"value": "Huddleup8@gmail.com"
+		},
+		{
+			"key": "Email_Pub9",
+			"value": "Huddleup9@gmail.com"
+		},
+		{
+			"key": "Email_Pub10",
+			"value": "Huddleup10@gmail.com"
+		},
+		{
+			"key": "Password",
+			"value": "huddle123"
+		},
+		{
+			"key": "1",
+			"value": "true"
+		},
+		{
+			"key": "2",
+			"value": "false"
+		},
+		{
+			"key": "Email_Sub1",
+			"value": "Uphuddle1@gmail.com"
+		},
+		{
+			"key": "Email_Sub2",
+			"value": "Uphuddle2@gmail.com"
+		},
+		{
+			"key": "Email_Sub3",
+			"value": "Uphuddle3@gmail.com"
+		},
+		{
+			"key": "Email_Sub4",
+			"value": "Uphuddle4@gmail.com"
+		},
+		{
+			"key": "Email_Sub5",
+			"value": "Uphuddle5@gmail.com"
+		},
+		{
+			"key": "Email_Sub6",
+			"value": "Uphuddle6@gmail.com"
+		},
+		{
+			"key": "Email_Sub7",
+			"value": "Uphuddle7@gmail.com"
+		},
+		{
+			"key": "Email_Sub8",
+			"value": "Uphuddle8@gmail.com"
+		},
+		{
+			"key": "Email_Sub9",
+			"value": "Uphuddle9@gmail.com"
+		},
+		{
+			"key": "id",
+			"value": "123456"
+		},
+		{
+			"key": "csrftoken",
+			"value": "iHJHgRugpXcXcrS8tg3bykLAy8suu0pYXtw3mzIlNRLcHGleR0QKTm8obTiX0tYp"
+		},
+		{
+			"key": "Email_Sub10",
+			"value": "Uphuddle10@gmail.com"
+		}
+	]
+}

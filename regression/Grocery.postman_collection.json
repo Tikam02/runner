@@ -1,0 +1,4856 @@
+{
+	"info": {
+		"_postman_id": "6ed88bbc-3eeb-4786-ad24-5b5e5a72c870",
+		"name": "Grocery owners  and its subscribers Copy",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var xsrfCookie = postman.getResponseCookie(\"csrftoken\"); \r",
+							"pm.collectionVariables.set(\"csrftoken\", xsrfCookie.value);\r",
+							"\r",
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							" \r",
+							"\r",
+							"const response = pm.response.json();\r",
+							"//pm.globals.set(\"publisher_id\", response.user);\r",
+							"pm.collectionVariables.set(\"publisher_id\", response.user);\r",
+							"\r",
+							"console.log(response);\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "X-CSRFToken",
+						"value": "{{csrftoken}}",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Referer",
+						"value": "https://morning-retreat-14771.herokuapp.com/",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"{{email_address}}\",\r\n    \"password\": \"{{password1}}\"\r\n}"
+				},
+				"url": {
+					"raw": "{{base_url}}/api/v1/rest-auth/login/",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"rest-auth",
+						"login",
+						""
+					],
+					"query": [
+						{
+							"key": "",
+							"value": null,
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "List Grocery Active Business",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var xsrfCookie = postman.getResponseCookie(\"csrftoken\"); \r",
+							"pm.collectionVariables.set(\"csrftoken\", xsrfCookie.value);\r",
+							"\r",
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});\r",
+							"\r",
+							"const response = pm.response.json();\r",
+							"\r",
+							"console.log(response);\r",
+							"//pm.globals.set(\"user_id\", response.id);\r",
+							"pm.collectionVariables.set(\"user_id\", response.id);\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "X-CSRFToken",
+						"value": "{{csrftoken}}",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Referer",
+						"value": "https://morning-retreat-14771.herokuapp.com/",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"publisher_id\": {{publisher_id}},\r\n    \"property_name\": \" Indian store \",\r\n    \"property_details\": \"Center of Delhi\",\r\n    \"property_address\": \"Delhi\",\r\n    \"property_phone\": \"123456\",\r\n    \"property_image\": null,\r\n    \"longitude\": \"77.2234\",\r\n    \"latitude\": \"28.6048\"\r\n}"
+				},
+				"url": {
+					"raw": "{{base_url_grocery}}list_active_business/",
+					"host": [
+						"{{base_url_grocery}}list_active_business"
+					],
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Retrieve Restaurant Active Business",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var xsrfCookie = postman.getResponseCookie(\"csrftoken\"); \r",
+							"pm.collectionVariables.set(\"csrftoken\", xsrfCookie.value);\r",
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"var response = pm.response.json()\r",
+							"console.log(response);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "X-CSRFToken",
+						"value": "{{csrftoken}}",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Referer",
+						"value": "https://morning-retreat-14771.herokuapp.com/",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": {{user_id}},\r\n    \"publisher_id\": {{publisher_id}},\r\n    \"property_name\": \"Spicy Indian Place\",\r\n    \"property_details\": \"Center of city\",\r\n    \"property_address\": \"Mumbai\",\r\n    \"property_phone\": \"123456\",\r\n    \"property_image\": null,\r\n    \"longitude\": 77.2234,\r\n    \"latitude\": 28.6048\r\n}"
+				},
+				"url": {
+					"raw": "{{base_url_grocery}}retrieve_active_business/{{user_id}}/",
+					"host": [
+						"{{base_url_grocery}}retrieve_active_business"
+					],
+					"path": [
+						"{{user_id}}",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "retrieve_active_business",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var xsrfCookie = postman.getResponseCookie(\"csrftoken\"); \r",
+							"pm.collectionVariables.set(\"csrftoken\", xsrfCookie.value);\r",
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"var response = pm.response.json()\r",
+							"console.log(response);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "X-CSRFToken",
+						"value": "{{csrftoken}}",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Referer",
+						"value": "https://morning-retreat-14771.herokuapp.com/",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{base_url_grocery}}retrieve_active_business/{{user_id}}/",
+					"host": [
+						"{{base_url_grocery}}retrieve_active_business"
+					],
+					"path": [
+						"{{user_id}}",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "list_active_subscribers",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var xsrfCookie = postman.getResponseCookie(\"csrftoken\"); \r",
+							"pm.collectionVariables.set(\"csrftoken\", xsrfCookie.value);\r",
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"var response = pm.response.json()\r",
+							"console.log(response);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "X-CSRFToken",
+						"value": "{{csrftoken}}",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Referer",
+						"value": "https://morning-retreat-14771.herokuapp.com/",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{base_url_grocery}}list_active_subscribers/",
+					"host": [
+						"{{base_url_grocery}}list_active_subscribers"
+					],
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "add_rescategory",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var xsrfCookie = postman.getResponseCookie(\"csrftoken\"); \r",
+							"pm.collectionVariables.set(\"csrftoken\", xsrfCookie.value);\r",
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});\r",
+							"\r",
+							"\r",
+							"\r",
+							"const response = pm.response.json();\r",
+							"//pm.globals.set(\"category_id\", response.id);\r",
+							"pm.collectionVariables.set(\"category_id\", response.id);\r",
+							"console.log(response);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "X-CSRFToken",
+						"value": "{{csrftoken}}",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Referer",
+						"value": "https://morning-retreat-14771.herokuapp.com/",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"publisher_id\": {{publisher_id}},\r\n    \"category\": \"Cold-drinks\"\r\n}"
+				},
+				"url": {
+					"raw": "{{base_url_grocery}}add_rescategory/",
+					"host": [
+						"{{base_url_grocery}}add_rescategory"
+					],
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "add_resitem",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var xsrfCookie = postman.getResponseCookie(\"csrftoken\"); \r",
+							"pm.collectionVariables.set(\"csrftoken\", xsrfCookie.value);\r",
+							"\r",
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});\r",
+							"\r",
+							"\r",
+							"const response = pm.response.json();\r",
+							"//pm.globals.set(\"item_name\", response.id);\r",
+							"pm.collectionVariables.set(\"item_name\",response.id);\r",
+							"console.log(response);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "X-CSRFToken",
+						"value": "{{csrftoken}}",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Referer",
+						"value": "https://morning-retreat-14771.herokuapp.com/",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"category_id\": {{category_id}},\r\n    \"name\": \"Coke\",\r\n    \"price\": 10,\r\n    \"image\": null,\r\n    \"description\": \"chilled\",\r\n    \"type_1\": \"VEG\" \r\n}"
+				},
+				"url": {
+					"raw": "{{base_url_grocery}}add_resitem/",
+					"host": [
+						"{{base_url_grocery}}add_resitem"
+					],
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "add_resheaderchoice",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var xsrfCookie = postman.getResponseCookie(\"csrftoken\"); \r",
+							"pm.collectionVariables.set(\"csrftoken\", xsrfCookie.value);\r",
+							"\r",
+							"const response = pm.response.json();\r",
+							"pm.collectionVariables.set(\"header_id\", response.id);\r",
+							"pm.collectionVariables.set(\"header_name\", response.name);\r",
+							"pm.collectionVariables.set(\"res_item_id\", response.item_name);\r",
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});\r",
+							"console.log(response);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "X-CSRFToken",
+						"value": "{{csrftoken}}",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Referer",
+						"value": "https://morning-retreat-14771.herokuapp.com/",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"item_name\": {{item_name}},\r\n    \"name\": \"Diet\",\r\n    \"isopt\": \"OP\",\r\n    \"ismul\": \"SIN\"\r\n}"
+				},
+				"url": {
+					"raw": "{{base_url_grocery}}add_resheaderchoice/",
+					"host": [
+						"{{base_url_grocery}}add_resheaderchoice"
+					],
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add Res Choice",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var xsrfCookie = postman.getResponseCookie(\"csrftoken\"); \r",
+							"pm.collectionVariables.set(\"csrftoken\", xsrfCookie.value);\r",
+							"\r",
+							"pm.test(\"Status code is 201\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});\r",
+							"\r",
+							"\r",
+							"const response = pm.response.json();\r",
+							"pm.collectionVariables.set(\"res_choice_id\", response.id);\r",
+							"console.log(response);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "X-CSRFToken",
+						"value": "{{csrftoken}}",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Referer",
+						"value": "https://morning-retreat-14771.herokuapp.com/",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"header_id\": {{header_id}},\r\n    \"name\": \"{{header_name}}\",\r\n    \"price\":10\r\n}"
+				},
+				"url": {
+					"raw": "{{base_url_grocery}}add_reschoice/",
+					"host": [
+						"{{base_url_grocery}}add_reschoice"
+					],
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "list_rescategory",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"var xsrfCookie = postman.getResponseCookie(\"csrftoken\"); \r",
+							"pm.collectionVariables.set(\"csrftoken\", xsrfCookie.value);\r",
+							"\r",
+							"var response = pm.response.json()\r",
+							"console.log(response);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "X-CSRFToken",
+						"value": "{{csrftoken}}",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Referer",
+						"value": "https://morning-retreat-14771.herokuapp.com/",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{base_url_grocery}}list_rescategory/",
+					"host": [
+						"{{base_url_grocery}}list_rescategory"
+					],
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "retrieve_rescategory",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var xsrfCookie = postman.getResponseCookie(\"csrftoken\"); \r",
+							"pm.collectionVariables.set(\"csrftoken\", xsrfCookie.value);\r",
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"const response = pm.response.json()\r",
+							"console.log(response);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "X-CSRFToken",
+						"value": "{{csrftoken}}",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Referer",
+						"value": "https://morning-retreat-14771.herokuapp.com/",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{base_url_grocery}}retrieve_rescategory/{{category_id}}/",
+					"host": [
+						"{{base_url_grocery}}retrieve_rescategory"
+					],
+					"path": [
+						"{{category_id}}",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "RetrieveResItem",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var xsrfCookie = postman.getResponseCookie(\"csrftoken\"); \r",
+							"pm.collectionVariables.set(\"csrftoken\", xsrfCookie.value);\r",
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"var response = pm.response.json()\r",
+							"console.log(response);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "X-CSRFToken",
+						"value": "{{csrftoken}}",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Referer",
+						"value": "https://morning-retreat-14771.herokuapp.com/",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{base_url_grocery}}RetrieveResItem/{{res_item_id}}",
+					"host": [
+						"{{base_url_grocery}}RetrieveResItem"
+					],
+					"path": [
+						"{{res_item_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "list_resheaderchoice",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"var xsrfCookie = postman.getResponseCookie(\"csrftoken\"); \r",
+							"pm.collectionVariables.set(\"csrftoken\", xsrfCookie.value);\r",
+							"\r",
+							"var response = pm.response.json()\r",
+							"console.log(response);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "X-CSRFToken",
+						"value": "{{csrftoken}}",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Referer",
+						"value": "https://morning-retreat-14771.herokuapp.com/",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{base_url_grocery}}list_resheaderchoice/",
+					"host": [
+						"{{base_url_grocery}}list_resheaderchoice"
+					],
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "retrieve_resheaderchoice",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							" var xsrfCookie = postman.getResponseCookie(\"csrftoken\"); \r",
+							" pm.collectionVariables.set(\"csrftoken\", xsrfCookie.value);\r",
+							"\r",
+							" pm.test(\"Status code is 200\", function () {\r",
+							"     pm.response.to.have.status(200);\r",
+							" });\r",
+							"\r",
+							"var response = pm.response.json()\r",
+							"console.log(response);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "X-CSRFToken",
+						"value": "{{csrftoken}}",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Referer",
+						"value": "https://morning-retreat-14771.herokuapp.com/",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{base_url_grocery}}retrieve_resheaderchoice/{{header_id}}/",
+					"host": [
+						"{{base_url_grocery}}retrieve_resheaderchoice"
+					],
+					"path": [
+						"{{header_id}}",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "list_full_nested_rescategory",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var xsrfCookie = postman.getResponseCookie(\"csrftoken\"); \r",
+							"pm.collectionVariables.set(\"csrftoken\", xsrfCookie.value);\r",
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"var response = pm.response.json()\r",
+							"console.log(response);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "X-CSRFToken",
+						"value": "{{csrftoken}}",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Referer",
+						"value": "https://morning-retreat-14771.herokuapp.com/",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{base_url_grocery}}list_full_nested_rescategory/",
+					"host": [
+						"{{base_url_grocery}}list_full_nested_rescategory"
+					],
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "add_discount",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var xsrfCookie = postman.getResponseCookie(\"csrftoken\"); \r",
+							"pm.collectionVariables.set(\"csrftoken\", xsrfCookie.value);\r",
+							"\r",
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							" \r",
+							"\r",
+							"const response = pm.response.json();\r",
+							"//pm.globals.set(\"publisher_id\", response.user);\r",
+							"pm.collectionVariables.set(\"discount_id\", response.id);\r",
+							"\r",
+							"console.log(response);\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "X-CSRFToken",
+						"value": "{{csrftoken}}",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Referer",
+						"value": "https://morning-retreat-14771.herokuapp.com/api/v1/discount/",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"publisher_id\": {{publisher_id}},\r\n    \"discount_name\": \"30% Off\",\r\n    \"start_time\": \"2012-03-19T07:22Z\",\r\n    \"end_time\": \"2012-03-29T07:22Z\",\r\n    \"min_value\": 10,\r\n    \"max_discount\": 300,\r\n    \"discount_percentage\": 30\r\n}"
+				},
+				"url": {
+					"raw": "{{base_url_discount}}add_discount/",
+					"host": [
+						"{{base_url_discount}}add_discount"
+					],
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "list_headline",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var xsrfCookie = postman.getResponseCookie(\"csrftoken\"); \r",
+							"pm.collectionVariables.set(\"csrftoken\", xsrfCookie.value);\r",
+							"\r",
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							" \r",
+							"\r",
+							"const response = pm.response.json();\r",
+							"//pm.globals.set(\"publisher_id\", response.user);\r",
+							"pm.collectionVariables.set(\"overview_list_headline_id\", response.id);\r",
+							"\r",
+							"console.log(response);\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "X-CSRFToken",
+						"value": "{{csrftoken}}",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Referer",
+						"value": "https://morning-retreat-14771.herokuapp.com/api/v1/overview/",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"publisher_id\": {{publisher_id}},\r\n    \"name\":\"{{overview_list_headline_name }}\"\r\n}"
+				},
+				"url": {
+					"raw": "{{base_url_overview}}/list_headline/",
+					"host": [
+						"{{base_url_overview}}"
+					],
+					"path": [
+						"list_headline",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "list_content",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var xsrfCookie = postman.getResponseCookie(\"csrftoken\"); \r",
+							"pm.collectionVariables.set(\"csrftoken\", xsrfCookie.value);\r",
+							"\r",
+							"\r",
+							"pm.test(\"Status code is 201\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});\r",
+							" \r",
+							"\r",
+							"const response = pm.response.json();\r",
+							"//pm.globals.set(\"publisher_id\", response.user);\r",
+							"pm.collectionVariables.set(\"overview_list_content_id\", response.id);\r",
+							"\r",
+							"console.log(response);\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "X-CSRFToken",
+						"value": "{{csrftoken}}",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Referer",
+						"value": "https://morning-retreat-14771.herokuapp.com/api/v1/overview/",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"headline_name\": \"{{overview_list_headline_id}}\",\r\n    \"text\": \"{{overview_list_content}}\",\r\n    \"image\": null\r\n}"
+				},
+				"url": {
+					"raw": "{{base_url_overview}}/list_content/{{publisher_id}}",
+					"host": [
+						"{{base_url_overview}}"
+					],
+					"path": [
+						"list_content",
+						"{{publisher_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "list_nested_headline",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var xsrfCookie = postman.getResponseCookie(\"csrftoken\"); \r",
+							"pm.collectionVariables.set(\"csrftoken\", xsrfCookie.value);\r",
+							"\r",
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							" \r",
+							"\r",
+							"const response = pm.response.json();\r",
+							"//pm.globals.set(\"publisher_id\", response.user);\r",
+							"//pm.collectionVariables.set(\"publisher_id\", response.user);\r",
+							"\r",
+							"console.log(response);\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "X-CSRFToken",
+						"value": "{{csrftoken}}",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Referer",
+						"value": "https://morning-retreat-14771.herokuapp.com/api/v1/overview/",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{base_url_overview}}/list_nested_headline/",
+					"host": [
+						"{{base_url_overview}}"
+					],
+					"path": [
+						"list_nested_headline",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "add banner",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var xsrfCookie = postman.getResponseCookie(\"csrftoken\"); \r",
+							"pm.collectionVariables.set(\"csrftoken\", xsrfCookie.value);\r",
+							"\r",
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							" \r",
+							"\r",
+							"const response = pm.response.json();\r",
+							"//pm.globals.set(\"publisher_id\", response.user);\r",
+							"pm.collectionVariables.set(\"banner_id\", response.id);\r",
+							"\r",
+							"console.log(response);\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "X-CSRFToken",
+						"value": "{{csrftoken}}",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Referer",
+						"value": "https://morning-retreat-14771.herokuapp.com/api/v1/banner/",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"publisher_id\": {{publisher_id}},\r\n    \"banner_name\": \"Membership banner\",\r\n    \"image\": null,\r\n    \"priority\": \"HIGH\"\r\n}"
+				},
+				"url": {
+					"raw": "{{base_url_banner}}add_banner/",
+					"host": [
+						"{{base_url_banner}}add_banner"
+					],
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "add_feed",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var xsrfCookie = postman.getResponseCookie(\"csrftoken\"); \r",
+							"pm.collectionVariables.set(\"csrftoken\", xsrfCookie.value);\r",
+							"\r",
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"const response = pm.response.json();\r",
+							"pm.collectionVariables.set(\"feed_update_id\", response.id);\r",
+							"\r",
+							"console.log(response);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "X-CSRFToken",
+						"value": "{{csrftoken}}",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Referer",
+						"value": "https://morning-retreat-14771.herokuapp.com/",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"publisher_id\": {{publisher_id}},\r\n    \"post_image\": null,\r\n    \"post_video\": null,\r\n    \"caption\": \"Hello\",\r\n    \"tags\": \"@all subscribers\",\r\n    \"created_at\": \"2021-04-15T00:01\",\r\n    \"ends_at\": \"2021-04-16T00:01\"\r\n}"
+				},
+				"url": {
+					"raw": "{{base_url_activity}}add_feed/",
+					"host": [
+						"{{base_url_activity}}add_feed"
+					],
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update_feed",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var xsrfCookie = postman.getResponseCookie(\"csrftoken\"); \r",
+							"pm.collectionVariables.set(\"csrftoken\", xsrfCookie.value);\r",
+							"\r",
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "X-CSRFToken",
+						"value": "{{csrftoken}}",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Referer",
+						"value": "https://morning-retreat-14771.herokuapp.com/",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": {{feed_update_id}},\r\n    \"publisher_id\": {{publisher_id}},\r\n    \"post_image\": null,\r\n    \"post_video\": null,\r\n    \"caption\": \"{{feed_update_caption}}\",\r\n    \"tags\": \"{{feed_update_tag}}\",\r\n    \"created_at\": \"2021-04-15T16:41:32.673646+05:30\",\r\n    \"ends_at\": \"2021-04-15T16:41:32.673656+05:30\"\r\n}"
+				},
+				"url": {
+					"raw": "{{base_url_activity}}update_feed/{{feed_update_id}}/",
+					"host": [
+						"{{base_url_activity}}update_feed"
+					],
+					"path": [
+						"{{feed_update_id}}",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "list_likes",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var xsrfCookie = postman.getResponseCookie(\"csrftoken\"); \r",
+							"pm.collectionVariables.set(\"csrftoken\", xsrfCookie.value);\r",
+							"\r",
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "X-CSRFToken",
+						"value": "{{csrftoken}}",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Referer",
+						"value": "https://morning-retreat-14771.herokuapp.com/",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"post_id\": {{publisher_id}},\r\n    \"subscriber_like\": {{subscriber_id}},\r\n    \"like\": \"like\"\r\n}"
+				},
+				"url": {
+					"raw": "{{base_url_activity}}list_likes/",
+					"host": [
+						"{{base_url_activity}}list_likes"
+					],
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "list_comment",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var xsrfCookie = postman.getResponseCookie(\"csrftoken\"); \r",
+							"pm.collectionVariables.set(\"csrftoken\", xsrfCookie.value);\r",
+							"\r",
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "X-CSRFToken",
+						"value": "{{csrftoken}}",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Referer",
+						"value": "https://morning-retreat-14771.herokuapp.com/",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"post_id\": {{publisher_id}},\r\n    \"subscriber_comment\": {{subscriber_id}},\r\n    \"comment\": \"Welcome Guys\"\r\n}"
+				},
+				"url": {
+					"raw": "{{base_url_activity}}list_comment/",
+					"host": [
+						"{{base_url_activity}}list_comment"
+					],
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "like_analytics",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var xsrfCookie = postman.getResponseCookie(\"csrftoken\"); \r",
+							"pm.collectionVariables.set(\"csrftoken\", xsrfCookie.value);\r",
+							"\r",
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "X-CSRFToken",
+						"value": "{{csrftoken}}",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Referer",
+						"value": "https://morning-retreat-14771.herokuapp.com/",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"post_id\": {{publisher_id}},\r\n    \"subscriber_comment\": {{subscriber_id}},\r\n    \"comment\": \"Welcome Guys\"\r\n}"
+				},
+				"url": {
+					"raw": "{{base_url_activity}}like_analytics/",
+					"host": [
+						"{{base_url_activity}}like_analytics"
+					],
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var xsrfCookie = postman.getResponseCookie(\"csrftoken\"); \r",
+							"pm.collectionVariables.set(\"csrftoken\", xsrfCookie.value);\r",
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							" \r",
+							"\r",
+							"const response = pm.response.json();\r",
+							"pm.collectionVariables.set(\"subscriber_id_2\", response.user);\r",
+							"\r",
+							"console.log(response);\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "X-CSRFToken",
+						"value": "{{csrftoken}}",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Referer",
+						"value": "https://morning-retreat-14771.herokuapp.com/",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"{{email_address_subscriber}}\",\r\n    \"password\": \"{{password_subscriber}}\"\r\n}"
+				},
+				"url": {
+					"raw": "{{base_url}}/api/v1/rest-auth/login/",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"rest-auth",
+						"login",
+						""
+					],
+					"query": [
+						{
+							"key": "",
+							"value": null,
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "retrieve_subscribed_businesses",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var xsrfCookie = postman.getResponseCookie(\"csrftoken\"); \r",
+							"pm.collectionVariables.set(\"csrftoken\", xsrfCookie.value);\r",
+							"\r",
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "X-CSRFToken",
+						"value": "{{csrftoken}}",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Referer",
+						"value": "https://morning-retreat-14771.herokuapp.com/",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{base_url_subscriber}}retrieve_subscribed_businesses/{{business_id}}",
+					"host": [
+						"{{base_url_subscriber}}retrieve_subscribed_businesses"
+					],
+					"path": [
+						"{{business_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "retrieve_sub_rescategory",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var xsrfCookie = postman.getResponseCookie(\"csrftoken\"); \r",
+							"pm.collectionVariables.set(\"csrftoken\", xsrfCookie.value);\r",
+							"\r",
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"const response = pm.response.json();\r",
+							"pm.collectionVariables.set(\"sub_rescategory_id\", response.results[0].id);\r",
+							"console.log(response);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "X-CSRFToken",
+						"value": "{{csrftoken}}",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Referer",
+						"value": "https://morning-retreat-14771.herokuapp.com/",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{base_url_subscriber}}retrieve_sub_rescategory/{{publisher_id}}",
+					"host": [
+						"{{base_url_subscriber}}retrieve_sub_rescategory"
+					],
+					"path": [
+						"{{publisher_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "retrieve_sub_listrescategory",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var xsrfCookie = postman.getResponseCookie(\"csrftoken\"); \r",
+							"pm.collectionVariables.set(\"csrftoken\", xsrfCookie.value);\r",
+							"\r",
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "X-CSRFToken",
+						"value": "{{csrftoken}}",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Referer",
+						"value": "https://morning-retreat-14771.herokuapp.com/",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{base_url_subscriber}}retrieve_sub_listrescategory/{{publisher_id}}",
+					"host": [
+						"{{base_url_subscriber}}retrieve_sub_listrescategory"
+					],
+					"path": [
+						"{{publisher_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "retrieve_sub_resitem",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var xsrfCookie = postman.getResponseCookie(\"csrftoken\"); \r",
+							"pm.collectionVariables.set(\"csrftoken\", xsrfCookie.value);\r",
+							"\r",
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"const response = pm.response.json();\r",
+							"pm.collectionVariables.set(\"sub_rescat_item_id\", response.results[0].id);\r",
+							"console.log(response);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "X-CSRFToken",
+						"value": "{{csrftoken}}",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Referer",
+						"value": "https://morning-retreat-14771.herokuapp.com/",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{base_url_subscriber}}retrieve_sub_resitem/{{publisher_id}}/{{sub_rescategory_id}}",
+					"host": [
+						"{{base_url_subscriber}}retrieve_sub_resitem"
+					],
+					"path": [
+						"{{publisher_id}}",
+						"{{sub_rescategory_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "retrieve_sub_resitem_peritem",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var xsrfCookie = postman.getResponseCookie(\"csrftoken\"); \r",
+							"pm.collectionVariables.set(\"csrftoken\", xsrfCookie.value);\r",
+							"\r",
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"const response = pm.response.json();\r",
+							"pm.collectionVariables.set(\"sub_rescat_resitem_peritem_id\", response.results[0].id);\r",
+							"console.log(response);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "X-CSRFToken",
+						"value": "{{csrftoken}}",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Referer",
+						"value": "https://morning-retreat-14771.herokuapp.com/",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{base_url_subscriber}}retrieve_sub_resitem_peritem/{{publisher_id}}/{{sub_rescat_item_id}}/",
+					"host": [
+						"{{base_url_subscriber}}retrieve_sub_resitem_peritem"
+					],
+					"path": [
+						"{{publisher_id}}",
+						"{{sub_rescat_item_id}}",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "retrieve_sub_resitem_percat_peritem",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var xsrfCookie = postman.getResponseCookie(\"csrftoken\"); \r",
+							"pm.collectionVariables.set(\"csrftoken\", xsrfCookie.value);\r",
+							"\r",
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "X-CSRFToken",
+						"value": "{{csrftoken}}",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Referer",
+						"value": "https://morning-retreat-14771.herokuapp.com/",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{base_url_subscriber}}retrieve_sub_resitem_percat_peritem/{{publisher_id}}/{{sub_rescategory_id}}/{{sub_rescat_resitem_peritem_id}}",
+					"host": [
+						"{{base_url_subscriber}}retrieve_sub_resitem_percat_peritem"
+					],
+					"path": [
+						"{{publisher_id}}",
+						"{{sub_rescategory_id}}",
+						"{{sub_rescat_resitem_peritem_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get_banners",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var xsrfCookie = postman.getResponseCookie(\"csrftoken\"); \r",
+							"pm.collectionVariables.set(\"csrftoken\", xsrfCookie.value);\r",
+							"\r",
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "X-CSRFToken",
+						"value": "{{csrftoken}}",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Referer",
+						"value": "https://morning-retreat-14771.herokuapp.com/",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{base_url_subscriber}}get_banners/",
+					"host": [
+						"{{base_url_subscriber}}get_banners"
+					],
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get_discount",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var xsrfCookie = postman.getResponseCookie(\"csrftoken\"); \r",
+							"pm.collectionVariables.set(\"csrftoken\", xsrfCookie.value);\r",
+							"\r",
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "X-CSRFToken",
+						"value": "{{csrftoken}}",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Referer",
+						"value": "https://morning-retreat-14771.herokuapp.com/",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{base_url_subscriber}}get_discount/",
+					"host": [
+						"{{base_url_subscriber}}get_discount"
+					],
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get_feeds_all",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var xsrfCookie = postman.getResponseCookie(\"csrftoken\"); \r",
+							"pm.collectionVariables.set(\"csrftoken\", xsrfCookie.value);\r",
+							"\r",
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"const response = pm.response.json();\r",
+							"pm.collectionVariables.set(\"feed_id\", response.results[0].id);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "X-CSRFToken",
+						"value": "{{csrftoken}}",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Referer",
+						"value": "https://morning-retreat-14771.herokuapp.com/",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{base_url_subscriber}}get_feeds_all/",
+					"host": [
+						"{{base_url_subscriber}}get_feeds_all"
+					],
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "post_comment",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var xsrfCookie = postman.getResponseCookie(\"csrftoken\"); \r",
+							"pm.collectionVariables.set(\"csrftoken\", xsrfCookie.value);\r",
+							"\r",
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"const response = pm.response.json();\r",
+							"pm.collectionVariables.set(\"comment_id\", response.post_id);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "X-CSRFToken",
+						"value": "{{csrftoken}}",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Referer",
+						"value": "https://morning-retreat-14771.herokuapp.com/",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"post_id\": \"1\",\r\n    \"subscriber_comment\": {{subscriber_id}},\r\n    \"comment\": \"Hi\"\r\n}"
+				},
+				"url": {
+					"raw": "{{base_url_subscriber}}post_comment/",
+					"host": [
+						"{{base_url_subscriber}}post_comment"
+					],
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "post_likes",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var xsrfCookie = postman.getResponseCookie(\"csrftoken\"); \r",
+							"pm.collectionVariables.set(\"csrftoken\", xsrfCookie.value);\r",
+							"\r",
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"const response = pm.response.json();\r",
+							"pm.collectionVariables.set(\"comment_id\", response.post_id);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "X-CSRFToken",
+						"value": "{{csrftoken}}",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Referer",
+						"value": "https://morning-retreat-14771.herokuapp.com/",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"post_id\": \"1\",\r\n    \"subscriber_like\": {{subscriber_id}},\r\n    \"like\": \"like\"\r\n}"
+				},
+				"url": {
+					"raw": "{{base_url_subscriber}}post_likes/",
+					"host": [
+						"{{base_url_subscriber}}post_likes"
+					],
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login 2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var xsrfCookie = postman.getResponseCookie(\"csrftoken\"); \r",
+							"pm.collectionVariables.set(\"csrftoken\", xsrfCookie.value);\r",
+							"\r",
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							" \r",
+							"\r",
+							"const response = pm.response.json();\r",
+							"//pm.globals.set(\"publisher_id\", response.user);\r",
+							"pm.collectionVariables.set(\"publisher_id_2\", response.user);\r",
+							"\r",
+							"console.log(response);\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "X-CSRFToken",
+						"value": "{{csrftoken}}",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Referer",
+						"value": "https://morning-retreat-14771.herokuapp.com/",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"{{publisher_email }}\",\r\n    \"password\": \"{{publisher_password}}\"\r\n}"
+				},
+				"url": {
+					"raw": "{{base_url}}/api/v1/rest-auth/login/",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"rest-auth",
+						"login",
+						""
+					],
+					"query": [
+						{
+							"key": "",
+							"value": null,
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Grocery Active Business",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var xsrfCookie = postman.getResponseCookie(\"csrftoken\"); \r",
+							"pm.collectionVariables.set(\"csrftoken\", xsrfCookie.value);\r",
+							"\r",
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});\r",
+							"\r",
+							"const response = pm.response.json();\r",
+							"\r",
+							"console.log(response);\r",
+							"//pm.globals.set(\"user_id\", response.id);\r",
+							"pm.collectionVariables.set(\"user_id_2\", response.id);\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "X-CSRFToken",
+						"value": "{{csrftoken}}",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Referer",
+						"value": "https://morning-retreat-14771.herokuapp.com/",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"publisher_id\": {{publisher_id_2}},\r\n    \"property_name\": \" We are Indian \",\r\n    \"property_details\": \"Center of Mumbai \",\r\n    \"property_address\": \"Delhi\",\r\n    \"property_phone\": \"123456\",\r\n    \"property_image\": null,\r\n    \"longitude\": \"77.2234\",\r\n    \"latitude\": \"28.6048\"\r\n}"
+				},
+				"url": {
+					"raw": "{{base_url_grocery}}list_active_business/",
+					"host": [
+						"{{base_url_grocery}}list_active_business"
+					],
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Retrieve Restaurant Active Business",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var xsrfCookie = postman.getResponseCookie(\"csrftoken\"); \r",
+							"pm.collectionVariables.set(\"csrftoken\", xsrfCookie.value);\r",
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"var response = pm.response.json()\r",
+							"console.log(response);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "X-CSRFToken",
+						"value": "{{csrftoken}}",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Referer",
+						"value": "https://morning-retreat-14771.herokuapp.com/",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": {{user_id_2}},\r\n    \"publisher_id\": {{publisher_id_2}},\r\n    \"property_name\": \"Spicy Indian Place\",\r\n    \"property_details\": \"Center of city\",\r\n    \"property_address\": \"Mumbai\",\r\n    \"property_phone\": \"123456\",\r\n    \"property_image\": null,\r\n    \"longitude\": 77.2234,\r\n    \"latitude\": 28.6048\r\n}"
+				},
+				"url": {
+					"raw": "{{base_url_grocery}}retrieve_active_business/{{user_id_2}}/",
+					"host": [
+						"{{base_url_grocery}}retrieve_active_business"
+					],
+					"path": [
+						"{{user_id_2}}",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "retrieve_active_business",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var xsrfCookie = postman.getResponseCookie(\"csrftoken\"); \r",
+							"pm.collectionVariables.set(\"csrftoken\", xsrfCookie.value);\r",
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"var response = pm.response.json()\r",
+							"console.log(response);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "X-CSRFToken",
+						"value": "{{csrftoken}}",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Referer",
+						"value": "https://morning-retreat-14771.herokuapp.com/",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{base_url_grocery}}retrieve_active_business/{{user_id_2}}/",
+					"host": [
+						"{{base_url_grocery}}retrieve_active_business"
+					],
+					"path": [
+						"{{user_id_2}}",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "list_active_subscribers",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var xsrfCookie = postman.getResponseCookie(\"csrftoken\"); \r",
+							"pm.collectionVariables.set(\"csrftoken\", xsrfCookie.value);\r",
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"var response = pm.response.json()\r",
+							"console.log(response);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "X-CSRFToken",
+						"value": "{{csrftoken}}",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Referer",
+						"value": "https://morning-retreat-14771.herokuapp.com/",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{base_url_grocery}}list_active_subscribers/",
+					"host": [
+						"{{base_url_grocery}}list_active_subscribers"
+					],
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "add_rescategory",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var xsrfCookie = postman.getResponseCookie(\"csrftoken\"); \r",
+							"pm.collectionVariables.set(\"csrftoken\", xsrfCookie.value);\r",
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});\r",
+							"\r",
+							"\r",
+							"\r",
+							"const response = pm.response.json();\r",
+							"//pm.globals.set(\"category_id\", response.id);\r",
+							"pm.collectionVariables.set(\"category_id_2\", response.id);\r",
+							"console.log(response);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "X-CSRFToken",
+						"value": "{{csrftoken}}",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Referer",
+						"value": "https://morning-retreat-14771.herokuapp.com/",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"publisher_id\": {{publisher_id_2}},\r\n    \"category\": \"cold-drinks\"\r\n}"
+				},
+				"url": {
+					"raw": "{{base_url_grocery}}add_rescategory/",
+					"host": [
+						"{{base_url_grocery}}add_rescategory"
+					],
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "add_resitem",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var xsrfCookie = postman.getResponseCookie(\"csrftoken\"); \r",
+							"pm.collectionVariables.set(\"csrftoken\", xsrfCookie.value);\r",
+							"\r",
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});\r",
+							"\r",
+							"\r",
+							"const response = pm.response.json();\r",
+							"//pm.globals.set(\"item_name\", response.id);\r",
+							"pm.collectionVariables.set(\"item_name_2\",response.id);\r",
+							"console.log(response);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "X-CSRFToken",
+						"value": "{{csrftoken}}",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Referer",
+						"value": "https://morning-retreat-14771.herokuapp.com/",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"category_id\": {{category_id_2}},\r\n    \"name\": \"dew\",\r\n    \"price\": 10,\r\n    \"image\": null,\r\n    \"description\": \"chilled\",\r\n    \"type_1\": \"VEG\" \r\n}"
+				},
+				"url": {
+					"raw": "{{base_url_grocery}}add_resitem/",
+					"host": [
+						"{{base_url_grocery}}add_resitem"
+					],
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "add_resheaderchoice",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var xsrfCookie = postman.getResponseCookie(\"csrftoken\"); \r",
+							"pm.collectionVariables.set(\"csrftoken\", xsrfCookie.value);\r",
+							"\r",
+							"const response = pm.response.json();\r",
+							"pm.collectionVariables.set(\"header_id_2\", response.id);\r",
+							"pm.collectionVariables.set(\"header_name_2\", response.name);\r",
+							"pm.collectionVariables.set(\"res_item_id_2\", response.item_name);\r",
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});\r",
+							"console.log(response);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "X-CSRFToken",
+						"value": "{{csrftoken}}",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Referer",
+						"value": "https://morning-retreat-14771.herokuapp.com/",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"item_name\": {{item_name_2}},\r\n    \"name\": \"Diet\",\r\n    \"isopt\": \"OP\",\r\n    \"ismul\": \"SIN\"\r\n}"
+				},
+				"url": {
+					"raw": "{{base_url_grocery}}add_resheaderchoice/",
+					"host": [
+						"{{base_url_grocery}}add_resheaderchoice"
+					],
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add Res Choice",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var xsrfCookie = postman.getResponseCookie(\"csrftoken\"); \r",
+							"pm.collectionVariables.set(\"csrftoken\", xsrfCookie.value);\r",
+							"\r",
+							"pm.test(\"Status code is 201\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});\r",
+							"\r",
+							"\r",
+							"const response = pm.response.json();\r",
+							"pm.collectionVariables.set(\"res_choice_id_2\", response.id);\r",
+							"console.log(response);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "X-CSRFToken",
+						"value": "{{csrftoken}}",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Referer",
+						"value": "https://morning-retreat-14771.herokuapp.com/",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"header_id\": {{header_id_2}},\r\n    \"name\": \"{{header_name_2}}\",\r\n    \"price\":10\r\n}"
+				},
+				"url": {
+					"raw": "{{base_url_grocery}}add_reschoice/",
+					"host": [
+						"{{base_url_grocery}}add_reschoice"
+					],
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "list_rescategory",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"var xsrfCookie = postman.getResponseCookie(\"csrftoken\"); \r",
+							"pm.collectionVariables.set(\"csrftoken\", xsrfCookie.value);\r",
+							"\r",
+							"var response = pm.response.json()\r",
+							"console.log(response);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "X-CSRFToken",
+						"value": "{{csrftoken}}",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Referer",
+						"value": "https://morning-retreat-14771.herokuapp.com/",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{base_url_grocery}}list_rescategory/",
+					"host": [
+						"{{base_url_grocery}}list_rescategory"
+					],
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "retrieve_rescategory",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var xsrfCookie = postman.getResponseCookie(\"csrftoken\"); \r",
+							"pm.collectionVariables.set(\"csrftoken\", xsrfCookie.value);\r",
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"const response = pm.response.json()\r",
+							"console.log(response);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "X-CSRFToken",
+						"value": "{{csrftoken}}",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Referer",
+						"value": "https://morning-retreat-14771.herokuapp.com/",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{base_url_grocery}}retrieve_rescategory/{{category_id_2}}/",
+					"host": [
+						"{{base_url_grocery}}retrieve_rescategory"
+					],
+					"path": [
+						"{{category_id_2}}",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "RetrieveResItem",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var xsrfCookie = postman.getResponseCookie(\"csrftoken\"); \r",
+							"pm.collectionVariables.set(\"csrftoken\", xsrfCookie.value);\r",
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"var response = pm.response.json()\r",
+							"console.log(response);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "X-CSRFToken",
+						"value": "{{csrftoken}}",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Referer",
+						"value": "https://morning-retreat-14771.herokuapp.com/",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{base_url_grocery}}RetrieveResItem/{{res_item_id_2}}",
+					"host": [
+						"{{base_url_grocery}}RetrieveResItem"
+					],
+					"path": [
+						"{{res_item_id_2}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "list_resheaderchoice",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"var xsrfCookie = postman.getResponseCookie(\"csrftoken\"); \r",
+							"pm.collectionVariables.set(\"csrftoken\", xsrfCookie.value);\r",
+							"\r",
+							"var response = pm.response.json()\r",
+							"console.log(response);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "X-CSRFToken",
+						"value": "{{csrftoken}}",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Referer",
+						"value": "https://morning-retreat-14771.herokuapp.com/",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{base_url_grocery}}list_resheaderchoice/",
+					"host": [
+						"{{base_url_grocery}}list_resheaderchoice"
+					],
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "retrieve_resheaderchoice",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							" var xsrfCookie = postman.getResponseCookie(\"csrftoken\"); \r",
+							" pm.collectionVariables.set(\"csrftoken\", xsrfCookie.value);\r",
+							"\r",
+							" pm.test(\"Status code is 200\", function () {\r",
+							"     pm.response.to.have.status(200);\r",
+							" });\r",
+							"\r",
+							"var response = pm.response.json()\r",
+							"console.log(response);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "X-CSRFToken",
+						"value": "{{csrftoken}}",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Referer",
+						"value": "https://morning-retreat-14771.herokuapp.com/",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{base_url_grocery}}retrieve_resheaderchoice/{{header_id_2}}/",
+					"host": [
+						"{{base_url_grocery}}retrieve_resheaderchoice"
+					],
+					"path": [
+						"{{header_id_2}}",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "list_full_nested_rescategory",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var xsrfCookie = postman.getResponseCookie(\"csrftoken\"); \r",
+							"pm.collectionVariables.set(\"csrftoken\", xsrfCookie.value);\r",
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"var response = pm.response.json()\r",
+							"console.log(response);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "X-CSRFToken",
+						"value": "{{csrftoken}}",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Referer",
+						"value": "https://morning-retreat-14771.herokuapp.com/",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{base_url_grocery}}list_full_nested_rescategory/",
+					"host": [
+						"{{base_url_grocery}}list_full_nested_rescategory"
+					],
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "add_discount",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var xsrfCookie = postman.getResponseCookie(\"csrftoken\"); \r",
+							"pm.collectionVariables.set(\"csrftoken\", xsrfCookie.value);\r",
+							"\r",
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							" \r",
+							"\r",
+							"const response = pm.response.json();\r",
+							"//pm.globals.set(\"publisher_id\", response.user);\r",
+							"//pm.collectionVariables.set(\"publisher_id\", response.user);\r",
+							"\r",
+							"console.log(response);\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "X-CSRFToken",
+						"value": "{{csrftoken}}",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Referer",
+						"value": "https://morning-retreat-14771.herokuapp.com/api/v1/discount/",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"publisher_id\": {{publisher_id_2}},\r\n    \"discount_name\": \"30% Off\",\r\n    \"start_time\": \"2012-03-19T07:22Z\",\r\n    \"end_time\": \"2012-03-29T07:22Z\",\r\n    \"min_value\": 10,\r\n    \"max_discount\": 300,\r\n    \"discount_percentage\": 30\r\n}"
+				},
+				"url": {
+					"raw": "{{base_url_discount}}add_discount/",
+					"host": [
+						"{{base_url_discount}}add_discount"
+					],
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "list_headline",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var xsrfCookie = postman.getResponseCookie(\"csrftoken\"); \r",
+							"pm.collectionVariables.set(\"csrftoken\", xsrfCookie.value);\r",
+							"\r",
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							" \r",
+							"\r",
+							"const response = pm.response.json();\r",
+							"//pm.globals.set(\"publisher_id\", response.user);\r",
+							"pm.collectionVariables.set(\"overview_list_headline_id_2\", response.id);\r",
+							"\r",
+							"console.log(response);\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "X-CSRFToken",
+						"value": "{{csrftoken}}",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Referer",
+						"value": "https://morning-retreat-14771.herokuapp.com/api/v1/overview/",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"publisher_id\": {{publisher_id_2}},\r\n    \"name\":\"{{overview_list_headline_name_2}}\"\r\n}"
+				},
+				"url": {
+					"raw": "{{base_url_overview}}/list_headline/",
+					"host": [
+						"{{base_url_overview}}"
+					],
+					"path": [
+						"list_headline",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "list_content",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var xsrfCookie = postman.getResponseCookie(\"csrftoken\"); \r",
+							"pm.collectionVariables.set(\"csrftoken\", xsrfCookie.value);\r",
+							"\r",
+							"\r",
+							"pm.test(\"Status code is 201\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});\r",
+							" \r",
+							"\r",
+							"const response = pm.response.json();\r",
+							"//pm.globals.set(\"publisher_id\", response.user);\r",
+							"pm.collectionVariables.set(\"overview_list_content_id_2\", response.id);\r",
+							"\r",
+							"console.log(response);\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "X-CSRFToken",
+						"value": "{{csrftoken}}",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Referer",
+						"value": "https://morning-retreat-14771.herokuapp.com/api/v1/overview/",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"headline_name\": \"{{overview_list_headline_id_2}}\",\r\n    \"text\": \"{{overview_list_content_2}}\",\r\n    \"image\": null\r\n}"
+				},
+				"url": {
+					"raw": "{{base_url_overview}}/list_content/{{publisher_id_2}}",
+					"host": [
+						"{{base_url_overview}}"
+					],
+					"path": [
+						"list_content",
+						"{{publisher_id_2}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "list_nested_headline",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var xsrfCookie = postman.getResponseCookie(\"csrftoken\"); \r",
+							"pm.collectionVariables.set(\"csrftoken\", xsrfCookie.value);\r",
+							"\r",
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							" \r",
+							"\r",
+							"const response = pm.response.json();\r",
+							"//pm.globals.set(\"publisher_id\", response.user);\r",
+							"//pm.collectionVariables.set(\"publisher_id\", response.user);\r",
+							"\r",
+							"console.log(response);\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "X-CSRFToken",
+						"value": "{{csrftoken}}",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Referer",
+						"value": "https://morning-retreat-14771.herokuapp.com/api/v1/overview/",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{base_url_overview}}/list_nested_headline/",
+					"host": [
+						"{{base_url_overview}}"
+					],
+					"path": [
+						"list_nested_headline",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "add banner",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var xsrfCookie = postman.getResponseCookie(\"csrftoken\"); \r",
+							"pm.collectionVariables.set(\"csrftoken\", xsrfCookie.value);\r",
+							"\r",
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							" \r",
+							"\r",
+							"const response = pm.response.json();\r",
+							"//pm.globals.set(\"publisher_id\", response.user);\r",
+							"pm.collectionVariables.set(\"banner_id_2\", response.id);\r",
+							"\r",
+							"console.log(response);\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "X-CSRFToken",
+						"value": "{{csrftoken}}",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Referer",
+						"value": "https://morning-retreat-14771.herokuapp.com/api/v1/banner/",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"publisher_id\": {{publisher_id_2}},\r\n    \"banner_name\": \"Membership banner\",\r\n    \"image\": null,\r\n    \"priority\": \"HIGH\"\r\n}"
+				},
+				"url": {
+					"raw": "{{base_url_banner}}add_banner/",
+					"host": [
+						"{{base_url_banner}}add_banner"
+					],
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "add_feed",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var xsrfCookie = postman.getResponseCookie(\"csrftoken\"); \r",
+							"pm.collectionVariables.set(\"csrftoken\", xsrfCookie.value);\r",
+							"\r",
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"const response = pm.response.json();\r",
+							"pm.collectionVariables.set(\"feed_update_id_2\", response.id);\r",
+							"\r",
+							"console.log(response);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "X-CSRFToken",
+						"value": "{{csrftoken}}",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Referer",
+						"value": "https://morning-retreat-14771.herokuapp.com/",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"publisher_id\": {{publisher_id_2}},\r\n    \"post_image\": null,\r\n    \"post_video\": null,\r\n    \"caption\": \"Hello\",\r\n    \"tags\": \"@all subscribers\",\r\n    \"created_at\": \"2021-04-15T00:01\",\r\n    \"ends_at\": \"2021-04-16T00:01\"\r\n}"
+				},
+				"url": {
+					"raw": "{{base_url_activity}}add_feed/",
+					"host": [
+						"{{base_url_activity}}add_feed"
+					],
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update_feed",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var xsrfCookie = postman.getResponseCookie(\"csrftoken\"); \r",
+							"pm.collectionVariables.set(\"csrftoken\", xsrfCookie.value);\r",
+							"\r",
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "X-CSRFToken",
+						"value": "{{csrftoken}}",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Referer",
+						"value": "https://morning-retreat-14771.herokuapp.com/",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": {{feed_update_id_2}},\r\n    \"publisher_id\": {{publisher_id_2}},\r\n    \"post_image\": null,\r\n    \"post_video\": null,\r\n    \"caption\":\"{{feed_update_caption_2}}\",\r\n    \"tags\": \"{{feed_update_tag_2}}\",\r\n    \"created_at\": \"2021-04-15T16:41:32.673646+05:30\",\r\n    \"ends_at\": \"2021-04-15T16:41:32.673656+05:30\"\r\n}"
+				},
+				"url": {
+					"raw": "{{base_url_activity}}update_feed/{{feed_update_id_2}}/",
+					"host": [
+						"{{base_url_activity}}update_feed"
+					],
+					"path": [
+						"{{feed_update_id_2}}",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "list_likes",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var xsrfCookie = postman.getResponseCookie(\"csrftoken\"); \r",
+							"pm.collectionVariables.set(\"csrftoken\", xsrfCookie.value);\r",
+							"\r",
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "X-CSRFToken",
+						"value": "{{csrftoken}}",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Referer",
+						"value": "https://morning-retreat-14771.herokuapp.com/",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"post_id\": {{publisher_id_2}},\r\n    \"subscriber_like\": {{subscriber_id_2}},\r\n    \"like\": \"like\"\r\n}"
+				},
+				"url": {
+					"raw": "{{base_url_activity}}list_likes/",
+					"host": [
+						"{{base_url_activity}}list_likes"
+					],
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "list_comment",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var xsrfCookie = postman.getResponseCookie(\"csrftoken\"); \r",
+							"pm.collectionVariables.set(\"csrftoken\", xsrfCookie.value);\r",
+							"\r",
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "X-CSRFToken",
+						"value": "{{csrftoken}}",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Referer",
+						"value": "https://morning-retreat-14771.herokuapp.com/",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"post_id\": {{publisher_id}},\r\n    \"subscriber_comment\": {{subscriber_id}},\r\n    \"comment\": \"Welcome Guys\"\r\n}"
+				},
+				"url": {
+					"raw": "{{base_url_activity}}list_comment/",
+					"host": [
+						"{{base_url_activity}}list_comment"
+					],
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var xsrfCookie = postman.getResponseCookie(\"csrftoken\"); \r",
+							"pm.collectionVariables.set(\"csrftoken\", xsrfCookie.value);\r",
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							" \r",
+							"\r",
+							"const response = pm.response.json();\r",
+							"pm.collectionVariables.set(\"subscriber_id\", response.user);\r",
+							"pm.globals.set(\"subscriber_id\", response.user);\r",
+							"\r",
+							"console.log(response);\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "X-CSRFToken",
+						"value": "{{csrftoken}}",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Referer",
+						"value": "https://morning-retreat-14771.herokuapp.com/",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"{{subscriber_email}}\",\r\n    \"password\": \"{{subscriber_password}}\"\r\n}"
+				},
+				"url": {
+					"raw": "{{base_url}}/api/v1/rest-auth/login/",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"rest-auth",
+						"login",
+						""
+					],
+					"query": [
+						{
+							"key": "",
+							"value": null,
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "retrieve_subscribed_businesses",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var xsrfCookie = postman.getResponseCookie(\"csrftoken\"); \r",
+							"pm.collectionVariables.set(\"csrftoken\", xsrfCookie.value);\r",
+							"\r",
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "X-CSRFToken",
+						"value": "{{csrftoken}}",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Referer",
+						"value": "https://morning-retreat-14771.herokuapp.com/",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{base_url_subscriber}}retrieve_subscribed_businesses/{{business_id_2}}",
+					"host": [
+						"{{base_url_subscriber}}retrieve_subscribed_businesses"
+					],
+					"path": [
+						"{{business_id_2}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "retrieve_sub_rescategory",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var xsrfCookie = postman.getResponseCookie(\"csrftoken\"); \r",
+							"pm.collectionVariables.set(\"csrftoken\", xsrfCookie.value);\r",
+							"\r",
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"const response = pm.response.json();\r",
+							"pm.collectionVariables.set(\"sub_rescategory_id_2\", response.results[0].id);\r",
+							"console.log(response);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "X-CSRFToken",
+						"value": "{{csrftoken}}",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Referer",
+						"value": "https://morning-retreat-14771.herokuapp.com/",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{base_url_subscriber}}retrieve_sub_rescategory/{{publisher_id_2}}",
+					"host": [
+						"{{base_url_subscriber}}retrieve_sub_rescategory"
+					],
+					"path": [
+						"{{publisher_id_2}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "retrieve_sub_listrescategory",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var xsrfCookie = postman.getResponseCookie(\"csrftoken\"); \r",
+							"pm.collectionVariables.set(\"csrftoken\", xsrfCookie.value);\r",
+							"\r",
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "X-CSRFToken",
+						"value": "{{csrftoken}}",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Referer",
+						"value": "https://morning-retreat-14771.herokuapp.com/",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{base_url_subscriber}}retrieve_sub_listrescategory/{{publisher_id_2}}",
+					"host": [
+						"{{base_url_subscriber}}retrieve_sub_listrescategory"
+					],
+					"path": [
+						"{{publisher_id_2}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "retrieve_sub_resitem",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var xsrfCookie = postman.getResponseCookie(\"csrftoken\"); \r",
+							"pm.collectionVariables.set(\"csrftoken\", xsrfCookie.value);\r",
+							"\r",
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"const response = pm.response.json();\r",
+							"pm.collectionVariables.set(\"sub_rescat_item_id_2\", response.results[0].id);\r",
+							"console.log(response);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "X-CSRFToken",
+						"value": "{{csrftoken}}",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Referer",
+						"value": "https://morning-retreat-14771.herokuapp.com/",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{base_url_subscriber}}retrieve_sub_resitem/{{publisher_id_2}}/{{sub_rescategory_id_2}}",
+					"host": [
+						"{{base_url_subscriber}}retrieve_sub_resitem"
+					],
+					"path": [
+						"{{publisher_id_2}}",
+						"{{sub_rescategory_id_2}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "retrieve_sub_resitem_peritem",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var xsrfCookie = postman.getResponseCookie(\"csrftoken\"); \r",
+							"pm.collectionVariables.set(\"csrftoken\", xsrfCookie.value);\r",
+							"\r",
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"const response = pm.response.json();\r",
+							"pm.collectionVariables.set(\"sub_rescat_resitem_peritem_id_2\", response.results[0].id);\r",
+							"console.log(response);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "X-CSRFToken",
+						"value": "{{csrftoken}}",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Referer",
+						"value": "https://morning-retreat-14771.herokuapp.com/",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{base_url_subscriber}}retrieve_sub_resitem_peritem/{{publisher_id_2}}/{{sub_rescat_item_id_2}}/",
+					"host": [
+						"{{base_url_subscriber}}retrieve_sub_resitem_peritem"
+					],
+					"path": [
+						"{{publisher_id_2}}",
+						"{{sub_rescat_item_id_2}}",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "retrieve_sub_resitem_percat_peritem",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var xsrfCookie = postman.getResponseCookie(\"csrftoken\"); \r",
+							"pm.collectionVariables.set(\"csrftoken\", xsrfCookie.value);\r",
+							"\r",
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "X-CSRFToken",
+						"value": "{{csrftoken}}",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Referer",
+						"value": "https://morning-retreat-14771.herokuapp.com/",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{base_url_subscriber}}retrieve_sub_resitem_percat_peritem/{{publisher_id_2}}/{{sub_rescategory_id_2}}/{{sub_rescat_resitem_peritem_id_2}}",
+					"host": [
+						"{{base_url_subscriber}}retrieve_sub_resitem_percat_peritem"
+					],
+					"path": [
+						"{{publisher_id_2}}",
+						"{{sub_rescategory_id_2}}",
+						"{{sub_rescat_resitem_peritem_id_2}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get_banners",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var xsrfCookie = postman.getResponseCookie(\"csrftoken\"); \r",
+							"pm.collectionVariables.set(\"csrftoken\", xsrfCookie.value);\r",
+							"\r",
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "X-CSRFToken",
+						"value": "{{csrftoken}}",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Referer",
+						"value": "https://morning-retreat-14771.herokuapp.com/",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{base_url_subscriber}}get_banners/",
+					"host": [
+						"{{base_url_subscriber}}get_banners"
+					],
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get_feeds_all",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var xsrfCookie = postman.getResponseCookie(\"csrftoken\"); \r",
+							"pm.collectionVariables.set(\"csrftoken\", xsrfCookie.value);\r",
+							"\r",
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"const response = pm.response.json();\r",
+							"pm.collectionVariables.set(\"feed_id_2\", response.results[0].id);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "X-CSRFToken",
+						"value": "{{csrftoken}}",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Referer",
+						"value": "https://morning-retreat-14771.herokuapp.com/",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{base_url_subscriber}}get_feeds_all/",
+					"host": [
+						"{{base_url_subscriber}}get_feeds_all"
+					],
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "post_comment",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var xsrfCookie = postman.getResponseCookie(\"csrftoken\"); \r",
+							"pm.collectionVariables.set(\"csrftoken\", xsrfCookie.value);\r",
+							"\r",
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"const response = pm.response.json();\r",
+							"pm.collectionVariables.set(\"comment_id_2\", response.post_id);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "X-CSRFToken",
+						"value": "{{csrftoken}}",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Referer",
+						"value": "https://morning-retreat-14771.herokuapp.com/",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"post_id\": \"1\",\r\n    \"subscriber_comment\": {{subscriber_id_2}},\r\n    \"comment\": \"Hi\"\r\n}"
+				},
+				"url": {
+					"raw": "{{base_url_subscriber}}post_comment/",
+					"host": [
+						"{{base_url_subscriber}}post_comment"
+					],
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "post_likes",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var xsrfCookie = postman.getResponseCookie(\"csrftoken\"); \r",
+							"pm.collectionVariables.set(\"csrftoken\", xsrfCookie.value);\r",
+							"\r",
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"const response = pm.response.json();\r",
+							"pm.collectionVariables.set(\"like_id_2\",response.id);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "X-CSRFToken",
+						"value": "{{csrftoken}}",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Referer",
+						"value": "https://morning-retreat-14771.herokuapp.com/",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"post_id\": \"1\",\r\n    \"subscriber_like\": {{subscriber_id_2}},\r\n    \"like\": \"like\"\r\n}"
+				},
+				"url": {
+					"raw": "{{base_url_subscriber}}post_likes/",
+					"host": [
+						"{{base_url_subscriber}}post_likes"
+					],
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "80a8017d-1aee-41d1-b681-26ccdda46bbd",
+			"key": "base_url_grocery",
+			"value": "https://morning-retreat-14771.herokuapp.com/api/v1/restaurant/"
+		},
+		{
+			"id": "08064624-41c4-4e65-b091-b69d0544942d",
+			"key": "email_address",
+			"value": "krunal5556@gmail.com"
+		},
+		{
+			"id": "0b3d4162-98d4-47b0-9a4b-bee1e783266c",
+			"key": "password1",
+			"value": "krunal123"
+		},
+		{
+			"id": "bc05bc96-21a1-4a22-aefa-f0cdaa6b46c6",
+			"key": "csrftoken",
+			"value": "7u2SDg03GJyARShCVZ9fRn6n86S3kyDd3WhREAAcYUKulQdVHclyRLS9c9MB4Thl"
+		},
+		{
+			"id": "ae06c896-e05a-4f3a-862b-683e334c16e1",
+			"key": "base_url",
+			"value": "https://morning-retreat-14771.herokuapp.com"
+		},
+		{
+			"id": "e8a08bb7-261b-48da-a407-c460cc5bb6af",
+			"key": "category_id",
+			"value": 8
+		},
+		{
+			"id": "28cdddaa-4044-4b20-a8fb-755d4e5d6066",
+			"key": "publisher_id",
+			"value": "10"
+		},
+		{
+			"id": "84aa7e82-6206-4396-a971-43c0991c3c75",
+			"key": "user_id",
+			"value": 22
+		},
+		{
+			"id": "a4380582-e323-4301-84d3-de5d074cafd9",
+			"key": "item_name",
+			"value": 10
+		},
+		{
+			"id": "5ff827c2-5559-4707-a263-8570fb60c310",
+			"key": "header_id",
+			"value": 12
+		},
+		{
+			"id": "badc7e1b-3749-48e2-9d3f-9a63a6079e53",
+			"key": "header_name",
+			"value": "Diet"
+		},
+		{
+			"id": "650fd86b-5d1e-4585-aecd-e739b27ec089",
+			"key": "res_item_id",
+			"value": 10
+		},
+		{
+			"id": "913374ec-4aaa-4a31-9ad1-5afe8d4e06c6",
+			"key": "res_choice_id",
+			"value": 19
+		},
+		{
+			"id": "ab2634f7-91e0-448b-a57a-3c9eec7c7e9d",
+			"key": "base_url_banner",
+			"value": "https://morning-retreat-14771.herokuapp.com/api/v1/banner/"
+		},
+		{
+			"id": "b22a2b23-7a49-46c2-b4e0-00a977521160",
+			"key": "banner_id",
+			"value": 4
+		},
+		{
+			"id": "325ade2f-db23-488d-ae80-920e4935132b",
+			"key": "banner_id_remove",
+			"value": "21"
+		},
+		{
+			"id": "368216eb-8a67-4aa6-b7c1-d91becbff28d",
+			"key": "base_url_discount",
+			"value": "https://morning-retreat-14771.herokuapp.com/api/v1/discount/"
+		},
+		{
+			"id": "d5c51d8b-3443-4eea-8392-e14e785236be",
+			"key": "base_url_overview",
+			"value": "https://morning-retreat-14771.herokuapp.com/api/v1/overview"
+		},
+		{
+			"id": "5fb57004-6e5a-4a59-abcd-1dc059a5211d",
+			"key": "overview_list_headline_name ",
+			"value": "Today's special"
+		},
+		{
+			"id": "b9526fac-a7ed-4c56-b9f9-f2211a3e85d7",
+			"key": "overview_list_headline_id",
+			"value": 1
+		},
+		{
+			"id": "1543b5a4-3b7e-4f6b-9e50-da0fcaf78d8d",
+			"key": "overview_list_content",
+			"value": "Masala Mushroom"
+		},
+		{
+			"id": "1d7bf831-0e2e-4655-90a9-11da46ed4c6c",
+			"key": "overview_list_content_id",
+			"value": 1
+		},
+		{
+			"id": "dfa71694-15f0-42c7-a1dd-7339d5748e35",
+			"key": "overview_headline_remove",
+			"value": "1"
+		},
+		{
+			"id": "0d7fcd89-e4e5-4954-bd5e-4668cb0264ef",
+			"key": "overview_remove_content",
+			"value": "10"
+		},
+		{
+			"id": "af82d17c-6896-44b2-98a4-e8fc3c53df03",
+			"key": "base_url_activity",
+			"value": "https://morning-retreat-14771.herokuapp.com/api/v1/activity/"
+		},
+		{
+			"id": "5f7360f0-b8b4-47e0-b76b-523b790b47e7",
+			"key": "feed_update_id",
+			"value": 3
+		},
+		{
+			"id": "4cca6df3-3f1d-465e-80f6-9ae291db1c65",
+			"key": "feed_update_caption",
+			"value": "Hey there all"
+		},
+		{
+			"id": "0cd9d3bf-e14e-4929-b2cc-3caec1f22795",
+			"key": "feed_update_tag",
+			"value": "@all_sub"
+		},
+		{
+			"id": "915c82cc-946e-430b-bb86-b8cd070371c8",
+			"key": "base_url_subscriber",
+			"value": "https://morning-retreat-14771.herokuapp.com/api/v1/subscriber/"
+		},
+		{
+			"id": "d6e54eda-3c98-464a-926c-afc16d4d02e0",
+			"key": "business_id",
+			"value": "2"
+		},
+		{
+			"id": "56d1faac-0fb6-4733-9e18-d6af6fa5d2b9",
+			"key": "sub_rescategory_id",
+			"value": ""
+		},
+		{
+			"id": "1a556fa5-6221-4aa1-a814-47c7b20173e7",
+			"key": "sub_rescat_item_id",
+			"value": ""
+		},
+		{
+			"id": "9284761f-4def-472e-b999-ecfea7c41c8d",
+			"key": "sub_rescat_resitem_peritem_id",
+			"value": ""
+		},
+		{
+			"id": "a34dd966-67df-48f6-abe2-24b977e5c973",
+			"key": "feed_id",
+			"value": 2
+		},
+		{
+			"id": "386aa0fe-baac-4fc2-9885-e7aee6347b98",
+			"key": "email_address_subscriber",
+			"value": "krunal3283@gmail.com"
+		},
+		{
+			"id": "fd6a06da-9353-438e-8a58-649cbd6457c2",
+			"key": "password_subscriber",
+			"value": "krunal123"
+		},
+		{
+			"id": "374e2426-1ec6-4fdf-b75d-8c0cd27ad6c0",
+			"key": "subscriber_id",
+			"value": 4
+		},
+		{
+			"id": "9abbc809-6f6b-42b8-9a5d-9ee9c01b4967",
+			"key": "subscribed_publisher_id",
+			"value": "5"
+		},
+		{
+			"id": "0b24b173-9bce-4e86-bcc7-05d64d954694",
+			"key": "publisher_email ",
+			"value": "krunal07@gmail.com"
+		},
+		{
+			"id": "bba772ee-b053-4d83-8aa1-b8ed5a645b14",
+			"key": "publisher_password",
+			"value": "krunal123"
+		},
+		{
+			"id": "8fce5b7b-989c-4139-a9b6-03c234ae0927",
+			"key": "subscriber_email",
+			"value": "krunal6311@gmail.com"
+		},
+		{
+			"id": "7d9ffd8b-b5a9-45d7-bea9-39fb9bfd5f82",
+			"key": "subscriber_password",
+			"value": "krunal123"
+		},
+		{
+			"id": "ba9f71bc-dded-451b-a719-625ea7896238",
+			"key": "category_id_2",
+			"value": "2"
+		},
+		{
+			"id": "888a707f-27b2-4f30-8135-13c9836706ce",
+			"key": "publisher_id_2",
+			"value": 7
+		},
+		{
+			"id": "c6ba5e47-95af-4b73-abad-7258711c71a6",
+			"key": "item_name_2",
+			"value": ""
+		},
+		{
+			"id": "e5269b6e-c43d-4063-b5b2-d96b11708b02",
+			"key": "header_id_2",
+			"value": ""
+		},
+		{
+			"id": "13741c6e-f81d-4eba-a25f-459fed282073",
+			"key": "header_name_2",
+			"value": ""
+		},
+		{
+			"id": "76cc3a37-6b7a-4c49-97f6-3bf7cff29a9f",
+			"key": "res_item_id_2",
+			"value": ""
+		},
+		{
+			"id": "43fc9f8a-499f-42a2-867d-90247509609f",
+			"key": "res_choice_id_2",
+			"value": ""
+		},
+		{
+			"id": "7fb4fdc2-c814-41e9-8ef1-50b0179cc12d",
+			"key": "banner_id_2",
+			"value": ""
+		},
+		{
+			"id": "0625e279-4956-4643-9ef5-56cab9540d90",
+			"key": "banner_id_remove_2",
+			"value": ""
+		},
+		{
+			"id": "952bcc8a-bb74-424e-ac40-65f7602b7d52",
+			"key": "overview_list_headline_name_2",
+			"value": "Today's manpasand"
+		},
+		{
+			"id": "5dcd3dde-ad75-49d2-995f-1132ecf26ccf",
+			"key": "overview_list_headline_id_2",
+			"value": ""
+		},
+		{
+			"id": "a5972809-291d-4fab-a73a-fc40b4856d33",
+			"key": "overview_list_content_2",
+			"value": "Jo apka maan ho"
+		},
+		{
+			"id": "bbc119ea-58f4-447e-a540-9aab13c84357",
+			"key": "overview_list_content_id_2",
+			"value": ""
+		},
+		{
+			"id": "13b2e563-916b-4bd3-addb-e58e0b22c682",
+			"key": "overview_headline_remove_2",
+			"value": ""
+		},
+		{
+			"id": "3847db2b-5f70-44cf-8ed9-c54ea57ea37d",
+			"key": "overview_remove_content_2",
+			"value": ""
+		},
+		{
+			"id": "7501afe9-ca4e-4b97-a8d4-341a353206fb",
+			"key": "feed_update_id_2",
+			"value": ""
+		},
+		{
+			"id": "ab6b9ea1-95e5-4358-aaff-98c4fd3aedac",
+			"key": "feed_update_caption_2",
+			"value": "Hello"
+		},
+		{
+			"id": "f3dfacaa-97c0-4661-b1f5-f5f3d8499803",
+			"key": "feed_update_tag_2",
+			"value": ""
+		},
+		{
+			"id": "d7b6d953-ecf7-473c-9a01-99de791c8534",
+			"key": "business_id_2",
+			"value": "2"
+		},
+		{
+			"id": "738cdbb3-49f3-4d45-9e8a-eb5121ee92f3",
+			"key": "sub_rescategory_id_2",
+			"value": ""
+		},
+		{
+			"id": "45a1ae22-6f78-45c9-a77a-f28dd26dc188",
+			"key": "sub_rescat_item_id_2",
+			"value": ""
+		},
+		{
+			"id": "c468aa74-50aa-4947-9121-f57b147ca2b6",
+			"key": "sub_rescat_resitem_peritem_id_2",
+			"value": ""
+		},
+		{
+			"id": "9cf64de6-ca68-4979-a0d9-d1f7c0db1ec5",
+			"key": "feed_id_2",
+			"value": ""
+		},
+		{
+			"id": "d7f6d606-cdbd-45a7-86bf-2c5739845c15",
+			"key": "subscriber_id_2",
+			"value": ""
+		},
+		{
+			"id": "80c063de-c4c9-4173-9628-7e9b29d5eb83",
+			"key": "user_id_2",
+			"value": "10"
+		},
+		{
+			"id": "b9e71d89-7f34-40d4-ba72-e0512bccbcf5",
+			"key": "subscribed_publisher_id_2",
+			"value": ""
+		},
+		{
+			"id": "eb2ab3bb-f884-48c8-bd25-13626698fc08",
+			"key": "comment_id",
+			"value": 1
+		},
+		{
+			"id": "6414930a-54fa-47ce-91a3-5d3aa85fa1af",
+			"key": "comment_id_2",
+			"value": ""
+		},
+		{
+			"id": "0f0609b8-64ad-40a4-9ac3-e15d9b83b580",
+			"key": "like_id_2",
+			"value": "3"
+		},
+		{
+			"id": "0c61ec8d-d1e1-4e57-a0b6-5bcc33f0f4f1",
+			"key": "like_id",
+			"value": ""
+		},
+		{
+			"id": "f1b1829e-7049-47df-9a39-2ec56ec64804",
+			"key": "discount_id",
+			"value": 5
+		}
+	]
+}

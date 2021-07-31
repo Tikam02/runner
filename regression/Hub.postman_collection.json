@@ -1,0 +1,1061 @@
+{
+	"info": {
+		"_postman_id": "0291adde-6075-4cd6-9729-f96722bc050c",
+		"name": "Hub",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Add Hub",
+			"item": [
+				{
+					"name": "Login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var xsrfCookie = postman.getResponseCookie(\"csrftoken\"); \r",
+									"pm.collectionVariables.set(\"csrftoken\", xsrfCookie.value);\r",
+									"\r",
+									"\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									" \r",
+									"\r",
+									"const response = pm.response.json();\r",
+									"//pm.globals.set(\"publisher_id\", response.user);\r",
+									"pm.collectionVariables.set(\"hub_id\", response.user);\r",
+									"\r",
+									"\r",
+									"console.log(response);\r",
+									"\r",
+									"\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "X-CSRFToken",
+								"value": "{{csrftoken}}",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Referer",
+								"value": "https://dev.huddleup.tech",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"{{email_hub}}\",\r\n    \"password\": \"{{password1}}\"\r\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}rest-auth/login/",
+							"host": [
+								"{{base_url}}rest-auth"
+							],
+							"path": [
+								"login",
+								""
+							],
+							"query": [
+								{
+									"key": "",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List Hub Active Business",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var xsrfCookie = postman.getResponseCookie(\"csrftoken\"); \r",
+									"pm.collectionVariables.set(\"csrftoken\", xsrfCookie.value);\r",
+									"\r",
+									"\r",
+									"pm.test(\"Status code is 201\", function () {\r",
+									"    pm.response.to.have.status(201);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"\r",
+									"const response = pm.response.json();\r",
+									"\r",
+									"console.log(response);\r",
+									"// //pm.globals.set(\"user_id\", response.id);\r",
+									"// pm.collectionVariables.set(\"user_id\", response.id);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "X-CSRFToken",
+								"value": "{{csrftoken}}",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Referer",
+								"value": "https://dev.huddleup.tech",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"publisher_id\": {{hub_id}},\r\n    \"property_name\": \"Big Bazar\",\r\n    \"property_details\": \"Center of Delhi\",\r\n    \"property_address\": \"Delhi\",\r\n    \"property_phone\": \"123456\",\r\n    \"property_image\": null,\r\n    \"longitude\": \"77.2234\",\r\n    \"latitude\": \"28.6048\",\r\n    \"location\": null,\r\n    \"currency\": \"DOLLAR\",\r\n    \"route\": \"India\",\r\n    \"tags\": [\"safe\"],\r\n    \"supported_bus_id\": 1\r\n}"
+						},
+						"url": {
+							"raw": "{{base_url_hub}}list_active_business/",
+							"host": [
+								"{{base_url_hub}}list_active_business"
+							],
+							"path": [
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List Hub Active Business",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var xsrfCookie = postman.getResponseCookie(\"csrftoken\"); \r",
+									"pm.collectionVariables.set(\"csrftoken\", xsrfCookie.value);\r",
+									"\r",
+									"\r",
+									"pm.test(\"List Hub Active business API request running successfully\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"\r",
+									"const response = pm.response.json();\r",
+									"\r",
+									"console.log(response);\r",
+									"//pm.globals.set(\"user_id\", response.id);\r",
+									"pm.collectionVariables.set(\"user_id\", response.results[0].id);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "X-CSRFToken",
+								"value": "{{csrftoken}}",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Referer",
+								"value": "https://dev.huddleup.tech",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{base_url_hub}}list_active_business/",
+							"host": [
+								"{{base_url_hub}}list_active_business"
+							],
+							"path": [
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "retrieve_active_business",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var xsrfCookie = postman.getResponseCookie(\"csrftoken\"); \r",
+									"pm.collectionVariables.set(\"csrftoken\", xsrfCookie.value);\r",
+									"\r",
+									"pm.test(\"retreive active business API request is running successfully.\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"All values match\", () => {\r",
+									"  const jsonData = pm.response.json();\r",
+									"  pm.expect(jsonData.property_name).to.eql(\"Big Bazar\");\r",
+									"  pm.expect(jsonData.property_details).to.eql(\"Center of Delhi\");\r",
+									"  pm.expect(jsonData.property_address).to.eql(\"Delhi\");\r",
+									"  pm.expect(jsonData.currency).to.eql(\"DOLLAR\");  \r",
+									"  pm.expect(jsonData.property_phone).to.eql(\"123456\");\r",
+									"  pm.expect(jsonData.longitude).to.equal(77.2234);\r",
+									"  pm.expect(jsonData.latitude).to.equal(28.6048);\r",
+									"})\r",
+									"\r",
+									"var response = pm.response.json()\r",
+									"console.log(response);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "X-CSRFToken",
+								"value": "{{csrftoken}}",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Referer",
+								"value": "https://dev.huddleup.tech",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url_hub}}retrieve_active_business/{{user_id}}/",
+							"host": [
+								"{{base_url_hub}}retrieve_active_business"
+							],
+							"path": [
+								"{{user_id}}",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login pub",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var xsrfCookie = postman.getResponseCookie(\"csrftoken\"); \r",
+									"pm.collectionVariables.set(\"csrftoken\", xsrfCookie.value);\r",
+									"\r",
+									"\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									" \r",
+									"\r",
+									"const response = pm.response.json();\r",
+									"//pm.globals.set(\"publisher_id\", response.user);\r",
+									"pm.collectionVariables.set(\"publisher_id\", response.user);\r",
+									"\r",
+									"\r",
+									"console.log(response);\r",
+									"\r",
+									"\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "X-CSRFToken",
+								"value": "{{csrftoken}}",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Referer",
+								"value": "https://dev.huddleup.tech",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"{{email_hub_sub}}\",\r\n    \"password\": \"{{password1}}\"\r\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}rest-auth/login/",
+							"host": [
+								"{{base_url}}rest-auth"
+							],
+							"path": [
+								"login",
+								""
+							],
+							"query": [
+								{
+									"key": "",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List Restaurant Active Business Copy",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var xsrfCookie = postman.getResponseCookie(\"csrftoken\"); \r",
+									"pm.collectionVariables.set(\"csrftoken\", xsrfCookie.value);\r",
+									"\r",
+									"\r",
+									"pm.test(\"Status code is 201\", function () {\r",
+									"    pm.response.to.have.status(201);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"\r",
+									"pm.test(\"Test 1\", () => {\r",
+									"  const jsonData = pm.response.json();\r",
+									"  pm.expect(jsonData.property_name).to.eql(\"Hello India\");\r",
+									"  pm.expect(jsonData.property_details).to.eql(\"Center of Delhi\");\r",
+									"  pm.expect(jsonData.property_address).to.eql(\"Delhi\");\r",
+									"  pm.expect(jsonData.property_phone).to.eql(\"123456\");\r",
+									"  pm.expect(jsonData.longitude).to.equal(77.2234);\r",
+									"  pm.expect(jsonData.latitude).to.equal(28.6048);\r",
+									"})\r",
+									"\r",
+									"const response = pm.response.json();\r",
+									"\r",
+									"console.log(response);\r",
+									"//pm.globals.set(\"user_id\", response.id);\r",
+									"pm.collectionVariables.set(\"user_id\", response.id);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "X-CSRFToken",
+								"value": "{{csrftoken}}",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Referer",
+								"value": "https://dev.huddleup.tech",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"publisher_id\": {{publisher_id}},\r\n    \"property_name\":\"Hello India\",\r\n    \"property_details\": \"Center of Delhi\",\r\n    \"property_address\": \"Delhi\",\r\n    \"property_phone\": \"123456\",\r\n    \"property_image\": null,\r\n    \"is_delivery\": false,\r\n    \"is_dineIn\": false,\r\n    \"is_takeout\": false,\r\n    \"longitude\": \"77.2234\",\r\n    \"latitude\": \"28.6048\",\r\n    \"location\": null,\r\n    \"landmark\": \"\",\r\n    \"currency\": null,\r\n    \"route\": \"India\",\r\n    \"tags\":[\"safe\"],\r\n    \"supported_bus_id\": null,\r\n    \"hub_id\": {{user_id}}\r\n}"
+						},
+						"url": {
+							"raw": "{{base_url_restaurant}}list_active_business/",
+							"host": [
+								"{{base_url_restaurant}}list_active_business"
+							],
+							"path": [
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login subscriber",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var xsrfCookie = postman.getResponseCookie(\"csrftoken\"); \r",
+									"pm.collectionVariables.set(\"csrftoken\", xsrfCookie.value);\r",
+									"\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									" \r",
+									"\r",
+									"const response = pm.response.json();\r",
+									"pm.collectionVariables.set(\"subscriber_id\", response.user);\r",
+									"\r",
+									"console.log(response);\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "X-CSRFToken",
+								"value": "{{csrftoken}}",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Referer",
+								"value": "https://dev.huddleup.tech",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"{{email_sub}}\",\r\n    \"password\": \"{{password1}}\"\r\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}rest-auth/login/",
+							"host": [
+								"{{base_url}}rest-auth"
+							],
+							"path": [
+								"login",
+								""
+							],
+							"query": [
+								{
+									"key": "",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "subscribe hub",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var xsrfCookie = postman.getResponseCookie(\"csrftoken\"); \r",
+									"pm.collectionVariables.set(\"csrftoken\", xsrfCookie.value);\r",
+									"\r",
+									"\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(201);\r",
+									"});\r",
+									" \r",
+									"\r",
+									"\r",
+									"\r",
+									"const response = pm.response.json();\r",
+									"//pm.globals.set(\"publisher_id\", response.user);\r",
+									"pm.collectionVariables.set(\"business_id_2\", response.id);\r",
+									"pm.collectionVariables.set(\"subscribed_publisher_id_2\", response.publisher_id);\r",
+									"console.log(response);\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "X-CSRFToken",
+								"value": "{{csrftoken}}",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Referer",
+								"value": "https://dev.huddleup.tech",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"subscriber_id\": {{subscriber_id}},\r\n    \"publisher_id\": {{hub_id}}\r\n    \r\n\r\n}"
+						},
+						"url": {
+							"raw": "{{base_url_subscriber}}list_subscribed_businesses/",
+							"host": [
+								"{{base_url_subscriber}}list_subscribed_businesses"
+							],
+							"path": [
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login hub",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var xsrfCookie = postman.getResponseCookie(\"csrftoken\"); \r",
+									"pm.collectionVariables.set(\"csrftoken\", xsrfCookie.value);\r",
+									"\r",
+									"\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									" \r",
+									"\r",
+									"const response = pm.response.json();\r",
+									"//pm.globals.set(\"publisher_id\", response.user);\r",
+									"pm.collectionVariables.set(\"hub_id\", response.user);\r",
+									"\r",
+									"\r",
+									"console.log(response);\r",
+									"\r",
+									"\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "X-CSRFToken",
+								"value": "{{csrftoken}}",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Referer",
+								"value": "https://dev.huddleup.tech",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"{{email_hub}}\",\r\n    \"password\": \"{{password1}}\"\r\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}rest-auth/login/",
+							"host": [
+								"{{base_url}}rest-auth"
+							],
+							"path": [
+								"login",
+								""
+							],
+							"query": [
+								{
+									"key": "",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "list_active_subscribers",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var xsrfCookie = postman.getResponseCookie(\"csrftoken\"); \r",
+									"pm.collectionVariables.set(\"csrftoken\", xsrfCookie.value);\r",
+									"\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"All values match for active subscribers\", () => {\r",
+									"  const jsonData = pm.response.json();\r",
+									"  pm.expect(jsonData.results[0].id).to.eql(43);\r",
+									"  pm.expect(jsonData.results[0].subscriber_id).to.eql(25);\r",
+									"  pm.expect(jsonData.results[1].id).to.eql(44);\r",
+									"  pm.expect(jsonData.results[1].subscriber_id).to.eql(26);\r",
+									"  pm.expect(jsonData.results[2].id).to.eql(46);\r",
+									"  pm.expect(jsonData.results[2].subscriber_id).to.eql(108);\r",
+									"})\r",
+									"\r",
+									"\r",
+									"var response = pm.response.json()\r",
+									"console.log(response);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "X-CSRFToken",
+								"value": "{{csrftoken}}",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Referer",
+								"value": "https://dev.huddleup.tech/",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url_hub}}list_active_subscribers/",
+							"host": [
+								"{{base_url_hub}}list_active_subscribers"
+							],
+							"path": [
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "count_hub_subscribers",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var xsrfCookie = postman.getResponseCookie(\"csrftoken\"); \r",
+									"pm.collectionVariables.set(\"csrftoken\", xsrfCookie.value);\r",
+									"\r",
+									"pm.test(\"Count hub subscriber api request is working\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"All values match for count_hub_subscribers api request\", () => {\r",
+									"  const jsonData = pm.response.json();\r",
+									"  pm.expect(jsonData.count).to.eql(4);\r",
+									"})\r",
+									"\r",
+									"\r",
+									"var response = pm.response.json()\r",
+									"console.log(response);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "X-CSRFToken",
+								"value": "{{csrftoken}}",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Referer",
+								"value": "https://dev.huddleup.tech",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url_hub}}count_hub_subscribers/",
+							"host": [
+								"{{base_url_hub}}count_hub_subscribers"
+							],
+							"path": [
+								""
+							]
+						},
+						"description": "Here you can find the number of subscribers that join a particular hub."
+					},
+					"response": []
+				},
+				{
+					"name": "count_hub_stores",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var xsrfCookie = postman.getResponseCookie(\"csrftoken\"); \r",
+									"pm.collectionVariables.set(\"csrftoken\", xsrfCookie.value);\r",
+									"\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"All values match for count_hub_stores api request\", () => {\r",
+									"  const jsonData = pm.response.json();\r",
+									"  pm.expect(jsonData.count).to.eql(1);\r",
+									"})\r",
+									"\r",
+									"var response = pm.response.json()\r",
+									"console.log(response);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "X-CSRFToken",
+								"value": "{{csrftoken}}",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Referer",
+								"value": "https://dev.huddleup.tech",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url_hub}}count_hub_stores/",
+							"host": [
+								"{{base_url_hub}}count_hub_stores"
+							],
+							"path": [
+								""
+							]
+						},
+						"description": "Here you can find the number of Hub store owner (people that own a business like restaurant , pharmacy etc.)"
+					},
+					"response": []
+				},
+				{
+					"name": "retrieve_active_business",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var xsrfCookie = postman.getResponseCookie(\"csrftoken\"); \r",
+									"pm.collectionVariables.set(\"csrftoken\", xsrfCookie.value);\r",
+									"\r",
+									"pm.test(\"Successful DELETE request\", function () {\r",
+									"    pm.expect(pm.response.code).to.be(204);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "X-CSRFToken",
+								"value": "{{csrftoken}}",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Referer",
+								"value": "https://dev.huddleup.tech",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url_hub}}retrieve_active_business/{{user_id}}/",
+							"host": [
+								"{{base_url_hub}}retrieve_active_business"
+							],
+							"path": [
+								"{{user_id}}",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "retrieve_subscribed_businesses",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var xsrfCookie = postman.getResponseCookie(\"csrftoken\"); \r",
+									"pm.collectionVariables.set(\"csrftoken\", xsrfCookie.value);\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "X-CSRFToken",
+								"value": "{{csrftoken}}",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Referer",
+								"value": "https://dev.huddleup.tech/",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url_subscriber}}retrieve_subscribed_businesses/108/",
+							"host": [
+								"{{base_url_subscriber}}retrieve_subscribed_businesses"
+							],
+							"path": [
+								"108",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url_hub",
+			"value": "https://dev.huddleup.tech/api/v1/hub/"
+		},
+		{
+			"key": "csrftoken",
+			"value": "s1yfXqVBkJCTqWNjKZ27ExtVfcPl4VZRexxUqy3JfLE6jpTqFRMfIbF2dSq6ds0f"
+		},
+		{
+			"key": "base_url",
+			"value": "https://dev.huddleup.tech/api/v1/"
+		},
+		{
+			"key": "hub_id",
+			"value": 105
+		},
+		{
+			"key": "email_hub",
+			"value": "Huddleuphub@gmail.com"
+		},
+		{
+			"key": "password1",
+			"value": "huddle123"
+		},
+		{
+			"key": "publisher_id",
+			"value": 73
+		},
+		{
+			"key": "user_id",
+			"value": "4"
+		},
+		{
+			"key": "email_hub_sub",
+			"value": "Huddleup1@gmail.com"
+		},
+		{
+			"key": "base_url_restaurant",
+			"value": "https://dev.huddleup.tech/api/v1/restaurant/"
+		},
+		{
+			"key": "email_sub",
+			"value": "sub@gmail.com"
+		},
+		{
+			"key": "subscriber_id",
+			"value": 108
+		},
+		{
+			"key": "base_url_subscriber",
+			"value": "https://dev.huddleup.tech/api/v1/subscriber/"
+		},
+		{
+			"key": "business_id_2",
+			"value": ""
+		},
+		{
+			"key": "subscribed_publisher_id_2",
+			"value": ""
+		}
+	]
+}
