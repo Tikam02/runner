@@ -1,0 +1,16 @@
+{
+    "id": "2a6cebe4-bfa3-2aef-016b-e9cab12f3c83",
+    "name": "E1",
+    "values": [
+        {
+            "key": "getpostman",
+            "value": "http://dump.getpostman.com",
+            "type": "text",
+            "name": "getpostman",
+            "enabled": true
+        }
+    ],
+    "timestamp": 1445284222282,
+    "synced": false,
+    "syncedFilename": ""
+}
