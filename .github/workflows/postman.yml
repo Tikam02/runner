@@ -53,8 +53,9 @@ jobs:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2-beta
         with:
-          node-version: '12'
+          node-version: '10.19.0'
           collectionID: 10954437-8cb0d465-dff6-4319-a607-caad24998335
           environmentID: 98798-a974f882-8ecg0-4c80-9901-a583778393987a
+      - run: npm install -g npm@7.20.3
       - run: npm install -g newman
       - run: newman run ./Restaurant_one_user.postman_collection.json
