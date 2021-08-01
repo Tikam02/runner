@@ -14,6 +14,7 @@
 						{
 							"listen": "test",
 							"script": {
+								"type": "text/javascript",
 								"exec": [
 									"var xsrfCookie = postman.getResponseCookie(\"csrftoken\"); \r",
 									"pm.collectionVariables.set(\"csrftoken\", xsrfCookie.value);\r",
@@ -34,8 +35,7 @@
 									"\r",
 									"\r",
 									""
-								],
-								"type": "text/javascript"
+								]
 							}
 						}
 					],
@@ -45,22 +45,18 @@
 							{
 								"key": "Content-Type",
 								"value": "application/json",
-								"type": "text"
 							},
 							{
 								"key": "X-CSRFToken",
 								"value": "{{csrftoken}}",
-								"type": "text"
 							},
 							{
 								"key": "Accept",
 								"value": "application/json",
-								"type": "text"
 							},
 							{
 								"key": "Referer",
 								"value": "https://dev.huddleup.tech",
-								"type": "text"
 							}
 						],
 						"body": {
@@ -87,6 +83,10 @@
 					},
 					"response": []
 				},
+
+
+
+
 				{
 					"name": "List Restaurant Active Business",
 					"event": [

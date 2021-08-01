@@ -14,6 +14,7 @@
 						{
 							"listen": "test",
 							"script": {
+								"type": "text/javascript",
 								"exec": [
 									"var xsrfCookie = postman.getResponseCookie(\"csrftoken\"); \r",
 									"pm.collectionVariables.set(\"csrftoken\", xsrfCookie.value);\r",
@@ -34,8 +35,7 @@
 									"\r",
 									"\r",
 									""
-								],
-								"type": "text/javascript"
+								]
 							}
 						}
 					],
@@ -44,23 +44,19 @@
 						"header": [
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"type": "text"
+								"value": "application/json"
 							},
 							{
 								"key": "X-CSRFToken",
-								"value": "{{csrftoken}}",
-								"type": "text"
+								"value": "{{csrftoken}}"
 							},
 							{
 								"key": "Accept",
-								"value": "application/json",
-								"type": "text"
+								"value": "application/json"
 							},
 							{
 								"key": "Referer",
-								"value": "https://dev.huddleup.tech",
-								"type": "text"
+								"value": "https://dev.huddleup.tech"
 							}
 						],
 						"body": {
