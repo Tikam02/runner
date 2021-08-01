@@ -58,4 +58,4 @@ jobs:
           environmentID: 98798-a974f882-8ecg0-4c80-9901-a583778393987a
       - run: npm install -g npm@7.20.3
       - run: npm install -g newman
-      - run: newman run ./testc.json
+      - run: newman run ./Restaurant_one_user.postman_collection.json
