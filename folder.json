@@ -1,0 +1,10 @@
+{
+    "runs":[
+        {
+            "collection": "./sample-collection.json"
+        },
+        {
+            "collection": "./testc.json"
+        }
+    ]
+}
